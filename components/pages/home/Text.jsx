@@ -47,7 +47,7 @@ export default function Text({more , less , btn = true , overlay = true , hidden
 		
     {list && <div ref={listRef} className="overflow-hidden mt-4 opacity-0" style={{ height: 0 }} >
         <div className="w-screen">
-          <ul className={`container mx-auto !px-[50px] list-disc grid ${grid ? "grid-cols-2" : "grid-cols-1"} max-md:grid-cols-1 gap-[10px] `}>
+          <ul className={`container mx-auto max-sm:!px-[20px] !px-[50px] list-disc grid ${grid ? "grid-cols-2" : "grid-cols-1"} max-md:grid-cols-1 gap-[10px] `}>
             {
               list.map((item, index) => (
                         <li key={index} className="text-white  text20 mb-[10px] font-[500] w-fit " > <TextSlide text={item}   /> </li>
