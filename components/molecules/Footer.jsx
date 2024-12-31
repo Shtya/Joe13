@@ -93,7 +93,7 @@ const Footer = ({cn}) => {
                         <hr className="my-[10px] " />
                         <div className={style.link}> {t("branch_office_jeddah")} </div>
                         <hr className="my-[10px] " />
-                        <div className={style.link}> {process.env.NEXT_PUBLIC_PHONE} </div>
+                        <div style={{direction : "ltr"}} className={`${style.link} rtl:text-right `}> {process.env.NEXT_PUBLIC_PHONE} </div>
                         <hr className="my-[10px] " />
                     </div>
 
