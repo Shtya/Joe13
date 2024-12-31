@@ -26,6 +26,7 @@ const Select = ({cnSelect ,label , dataAos , error , trigger , watch , KEY, setV
   const watchKeyGET = watch?.(KEY+"GET")
   useEffect(()=>{
     if(watchKeyGET)  handleValue(watchKeyGET) 
+      else handleValue("")
   },[])
 
 

@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 
-export default function EffectFixed({ cn , overlay = true ,  image, children, z }) {
+export default function EffectFixed({cn , id , overlay = true ,  image, children, z }) {
     const [isInView, setIsInView] = useState(false); // Initially, the section is not in view
     const sectionRef = useRef(null);
 
@@ -28,9 +28,9 @@ export default function EffectFixed({ cn , overlay = true ,  image, children, z 
     }, []);
 
     return (
-        <div ref={sectionRef} className='py-[50px] section overflow-x-hidden  relative min-h-screen w-full flex flex-col gap-[30px] justify-center items-center'>
+        <div id={id} ref={sectionRef} className='py-[50px] section overflow-x-hidden  relative min-h-screen w-full flex flex-col gap-[30px] justify-center items-center'>
             <div className={`fixed w-full h-full top-0 left-0 ${z ? z : 'z-[-10]'} ${isInView ? 'opacity-100' : 'opacity-0 '} transition-opacity duration-300 ease-in-out`}>
-                <Image className={`${!overlay && "!object-contain"}  img-overlay`} src={image} alt='Background Image' layout='fill' objectFit='cover' />
+                <Image className={`${!overlay && "!object-contain"} ${cn}  img-overlay`} src={image} alt='Background Image' layout='fill' objectFit='cover' />
                 {overlay && <div className='bg-overlay'></div>}
             </div>
             <div className="container !px-[10px] flex flex-col gap-[15px] justify-center items-center"> {children} </div>

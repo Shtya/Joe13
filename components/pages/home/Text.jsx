@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 
 
 
-export default function Text({more , less , btn = true , overlay = true , hidden , component , list , data , grid=1 , img , icon , title , description}) {
+export default function Text({more , less , btn = true , overlay = true , hidden , component , list , data , grid , img , icon , title , description}) {
 	const t = useTranslations()
   const listRef = useRef(null); // Reference to the list
   const [isExpanded, setIsExpanded] = useState(false); // State to track if the list is expanded
@@ -40,14 +40,14 @@ export default function Text({more , less , btn = true , overlay = true , hidden
 
     {icon && <div className={`${isExpanded ? " h-0 overflow-hidden " : "" }  transition-all duration-300 `} > <Image  className=" object-contain " src="/assets/imgs/logo2.png" alt="" width={200} height={80} /> </div>}
     
-    {!icon && <TextSlide  cnParent={` ${hidden && isExpanded && "hidden" }  ${isExpanded ?"w-full flex items-start justify-start text-primary  " : ""}   `}         cn={` ${!isExpanded ? "text-center" : "!text-primary rtl:text-right ltr:text-left"} w-full text40 text-white `}  text={title}/>}
+    {!icon && <TextSlide  cnParent={` ${hidden && isExpanded && "hidden" } mb-[10px]  ${isExpanded ?"w-full flex items-start justify-start text-primary  " : ""}   `}         cn={` ${!isExpanded ? "text-center" : "!text-primary rtl:text-right ltr:text-left"} w-full text40 text-white `}  text={title}/>}
     {icon && 		<div  className={`${isExpanded ?"w-full flex items-start justify-start !text-primary rtl:text-right ltr:text-left" : "hidden"} text-center duration-300 transition-all w-full text40 text-white `} > {title} </div>  }
 		<TextSlide  cnParent={` ${hidden && isExpanded && "hidden" } ${isExpanded ?"w-full flex items-start justify-start mt-[-15px] " : ""}`}  cn={` ${!isExpanded ? "text-center" : "text18 rtl:text-right ltr:text-left" } w-full text22 text-white `} text={description}/>
 
 		
     {list && <div ref={listRef} className="overflow-hidden mt-4 opacity-0" style={{ height: 0 }} >
         <div className="w-screen">
-          <ul className={`container mx-auto !px-[50px] list-disc grid grid-cols-${grid} max-md:grid-cols-1 gap-[10px] `}>
+          <ul className={`container mx-auto !px-[50px] list-disc grid ${grid ? "grid-cols-2" : "grid-cols-1"} max-md:grid-cols-1 gap-[10px] `}>
             {
               list.map((item, index) => (
                         <li key={index} className="text-white  text20 mb-[10px] font-[500] w-fit " > <TextSlide text={item}   /> </li>

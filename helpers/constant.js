@@ -1,0 +1,6 @@
+export const telecoms = "telecoms"
+export const manpowerAndHR = "manpowerAndHR"
+export const marketing = "marketing"
+export const softwareAndAI = "softwareAndAI"
+export const mosanadah = "mosanadah"
+export const activationAndEvent = "activationAndEvent"

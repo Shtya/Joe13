@@ -13,13 +13,13 @@ export default function WhyChooseUs() {
     const t = useTranslations('JoinUs');
 
     const data = [t('innovativeCulture'), t('careerGrowth'), t('collaborativeEnvironment'), t('workLifeBalance'), t('inclusiveWorkplace')];
-	const { register, errors , trigger , clearErrors, setError, getValues, setValue, submit , watch, reset } = hookJoinUs()
+	const { register, errors , trigger , clearErrors, setError, getValues, setValue, submit , watch, reset , loading } = hookJoinUs()
    
 	
     return (
         <div className='w-screen'>
             <div className='container'>
-                <TextSlide cnParent={``} cn={` text-left w-full text40 text-primary font-[600] `} text={t('whyChooseTitle')} />
+                <TextSlide cnParent={`w-fit ltr:mr-auto rtl:ml-auto`} cn={` text-left w-full text40 text-primary font-[600] `} text={t('whyChooseTitle')} />
 
                 <ul className={` mx-auto !px-[50px] list-decimal flex flex-col gap-[10px] mt-[30px] `}>
                     {data.map((item, index) => (
@@ -30,9 +30,9 @@ export default function WhyChooseUs() {
                     ))}
                 </ul>
 
-                <TextSlide cnParent={`mt-[40px]  mb-[20px] `} cn={` text-left  text40 text-white font-[700] `} text={t('applyNow')} />
+                <TextSlide cnParent={`mt-[60px] w-fit ltr:mr-auto rtl:ml-auto mb-[30px] `} cn={` text-left  text40 text-white font-[700] `} text={t('applyNow')} />
 
-				<form className={`grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-y-[30px] gap-x-[60px]  `} >
+				<form className={`grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-y-[40px] gap-x-[60px]  `} >
 					<Input register={register("name")}        error={errors?.name}        type={"text"}  KEY={"fullName"}        cnInput={""}  label={""} place={t("fullName")} />
 					<Input register={register("phone")}           error={errors?.phone}           type={"email"} KEY={"phone"}           cnInput={""}  label={""} place={t("phoneNumber")} />
 					<Input register={register("email")}           error={errors?.email}           type={"text"}  KEY={"email"}           cnInput={""}  label={""} place={t("email")} />
@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
 					<UploadFile setValue={setValue} watch={watch} trigger={trigger}  error={errors?.CV}   KEY={"CV"}              cnInput={""}  label={""} place={t("uploadCV")} />
 				
 				</form>
-				<div className="flex items-center justify-center "> <Button name={t("sendNow")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} /> </div>
+				<div className="flex items-center justify-center "> <Button loading={loading} name={t("sendNow")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} /> </div>
 				
             </div>
         </div>

@@ -3,6 +3,8 @@
 import Button from '@/components/atoms/Button';
 import EffectFixed from '@/helpers/EffectFixed';
 import TextAnimation from '@/helpers/TextAnimation';
+import TextSlide from '@/helpers/TextSlide';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
@@ -58,6 +60,7 @@ export const settings = {
 
 
 export default function Section3() {
+	const t = useTranslations()
 
     const data = [
         { name: 'Brand 1', value: '/assets/brands/1.png' },
@@ -79,8 +82,10 @@ export default function Section3() {
     ];
 
     return (
-        <EffectFixed image={'/assets/imgs/section3.jpeg'} z={'z-[-150]'}>
-            <div className="text40 font-[600] text-white"> <TextAnimation text={"Our Partners"} /> </div>
+        <EffectFixed id="ourPartners" image={'/assets/imgs/section3.jpeg'} z={'z-[-150]'}>
+			<TextSlide  cn={"text40 font-[600] text-white text-center  "} text={t("Our Partners")} />
+
+            {/* <div className=""> <TextAnimation text={} /> </div> */}
             <Slider {...settings} className='w-full bg-[#FFFFFF17] py-[5px]'>
                 {data?.slice(0,8).map((e, i) => (
                     <div key={i} className="w-[100px] h-[80px]">

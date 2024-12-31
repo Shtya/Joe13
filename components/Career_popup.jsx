@@ -21,6 +21,7 @@ const Career_popup = ({ setShow, career, lang, id }) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
   };
+  
   const onSubmit = handleSubmit(async (e) => {
     try {
       const formData = new FormData();

@@ -1,5 +1,4 @@
 // Importing fonts from Google Fonts
-import { Toaster } from "react-hot-toast";
 import { useMessages } from 'next-intl';
 import { NextIntlClientProvider } from 'next-intl';
 import Head from 'next/head';
@@ -25,7 +24,6 @@ export default function RootLayout({ children, params: { locale } }) {
           <Layout>
             {children}
           </Layout>
-          <Toaster position="bottom-center" duration={9000} />
         </body>
       </NextIntlClientProvider>
     </html>

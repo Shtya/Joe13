@@ -48,8 +48,8 @@ export default function BoardMembers() {
                             <div className='cover w-full max-w-[200px] h-[200px] max-lg:max-w-[150px] max-lg:h-[150px] max-md:max-w-[100px] max-md:h-[100px] rounded-[50%] overflow-hidden ' style={{ boxShadow: '1px 8px 18px 0px #FFFFFF1A , 5px 32px 32px 0px #FFFFFF17 ,10px 71px 43px 0px #FFFFFF0D , 19px 127px 51px 0px #FFFFFF03' }}>
                                 <Image className=' object-contain bg-white w-full h-full' src={`/assets/aboutus/person${i + 1}.png`} alt={e.name} width={200} height={200} />{' '}
                             </div>
-							<TextSlide cn={'text20 text-center '} text={e.name}  color={"white"} />
-							<TextSlide cn={"text14 text-center  "} cnParent={"mt-[-10px] "}  text={e.position}  color={"white"} />
+							<TextSlide cn={'text20 text-center '} text={e.name}   />
+							<TextSlide cn={"text14 text-center  "} cnParent={"mt-[-10px] "}  text={e.position}   />
                             {/* <div className=> {e.name} </div> */}
                         </div>
                     ))}
