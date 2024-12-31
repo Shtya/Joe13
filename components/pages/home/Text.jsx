@@ -60,12 +60,12 @@ export default function Text({more , less , btn = true , overlay = true , hidden
 
     {data && <div ref={listRef} className="overflow-hidden mt-4 opacity-0" style={{ height: 0 }} >
         <div className="w-screen">
-          <ul className={`container mx-auto !px-[50px] grid grid-cols-${grid} max-md:grid-cols-1 gap-[30px] `}>
+          <ul className={`container mx-auto max-sm:!px-[20px] !px-[50px] grid grid-cols-${grid} max-md:grid-cols-1 gap-[30px] `}>
             {
               data.map((item, index) => (
                         <li key={index} className="  " > 
-                          <div className="mb-[20px] grid grid-cols-[auto,1fr] items-center gap-[10px] text-white  text22 font-[500] w-fit" >
-                            <TextSlide cnParent={"flex-none w-full "} text={item?.title}   />
+                          <div className="mb-[20px] grid grid-cols-[auto,1fr] max-md:grid-cols-1 items-center gap-[10px] text-white  text22 font-[500] w-fit" >
+                            <TextSlide cnParent={"flex-none w-fit "} text={item?.title}   />
                             <TextSlide cnParent={"text18 font-[400] opacity-70  "} text={item?.desc} />
                           </div>
                           {item?.data?.map((item, index) => (<div key={index} className="text-white  text18 opacity-70 list-disc mx-[30px]  font-[500] w-fit " > <TextSlide text={item}   /> </div> )) }
