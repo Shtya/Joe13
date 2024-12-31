@@ -68,7 +68,7 @@ export default function Text({more , less , btn = true , overlay = true , hidden
                             <TextSlide cnParent={"flex-none w-fit "} text={item?.title}   />
                             <TextSlide cnParent={"text18 font-[400] opacity-70  "} text={item?.desc} />
                           </div>
-                          {item?.data?.map((item, index) => (<div key={index} className="text-white  text18 opacity-70 list-disc mx-[30px]  font-[500] w-fit " > <TextSlide text={item}   /> </div> )) }
+                          {item?.data?.map((item, index) => (<div key={index} className="text-white  text18 opacity-70 list-disc max-sm:mx-[10px] mx-[30px]  font-[500] w-fit " > <TextSlide text={item}   /> </div> )) }
                         </li>
                     ))
               }
