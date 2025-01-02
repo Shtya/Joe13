@@ -17,8 +17,8 @@ export default function SwitchLang() {
 
   return (
 	<div onClick={()=> handleLanguageChange(locale == "ar" ? "en" : "ar") } className="flex items-center gap-[10px] cursor-pointer uppercase hover:text-primary transition-all duration-300 " >
-		<span  > {locale} </span>
 		<Globe />
+		<span  > {locale == "en" ? "AR" : "EN"} </span>
 	</div>
   )
 }

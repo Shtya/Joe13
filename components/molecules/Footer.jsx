@@ -7,12 +7,12 @@ import Link from 'next/link';
 const Footer = ({cn}) => {
     const t = useTranslations('Footer');
     const links = {
-        facebook : "",
-        insta : "",
-        tiktok : "",
-        linkedin : "",
-        snap : "",
-        x : "",
+        facebook : "https://www.facebook.com/joe13ksa?mibextid=ZbWKwL",
+        insta : "https://www.instagram.com/joe13ksa?igsh=NjV5Y254dWl6MGJy",
+        tiktok : "https://www.tiktok.com/@joe13ksa?_t=8shIsnjbS6c&_r=1",
+        linkedin : "https://www.linkedin.com/company/joe13ksa/",
+        snap : "https://www.snapchat.com/add/joe13ksa?share_id=7tDt0EHfCLY&locale=en-GB",
+        x : "https://x.com/joe13ksa?t=DhxUu2XNItuJNGBAAAnLEA&s=09",
     }
 
     const Footer = [
@@ -63,12 +63,12 @@ const Footer = ({cn}) => {
                     <div className="col">
                         <Image className="mt-[-15px] max-w-[200px] w-full " src="/assets/svg/logo.svg" alt="logo" width={200} height={50} />
                         <div className="flex items-center justify-between gap-[10px] max-w-[200px] w-full ">
-                            <Link className=""  href={links.facebook} > <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "  src="/assets/social/facebook.png" alt="logo" width={20} height={20} /> </Link>
-                            <Link className=""  href={links.insta} >    <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/insta.png" alt="logo" width={20} height={20} /> </Link>
-                            <Link className=""  href={links.tiktok} >   <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/tiktok.png" alt="logo" width={20} height={20} /> </Link>
-                            <Link className=""  href={links.linkedin} > <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/linkedin.png" alt="logo" width={20} height={20} /> </Link>
-                            <Link className=""  href={links.snap} >     <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/snap.png" alt="logo" width={20} height={20} /> </Link>
-                            <Link className=""  href={links.x} >        <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/x.png" alt="logo" width={20} height={20} /> </Link>
+                            <Link  href={links.facebook} > <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "  src="/assets/social/facebook.png" alt="logo" width={20} height={20} /> </Link>
+                            <Link  href={links.insta} >    <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/insta.png" alt="logo" width={20} height={20} /> </Link>
+                            <Link  href={links.tiktok} >   <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/tiktok.png" alt="logo" width={20} height={20} /> </Link>
+                            <Link  href={links.linkedin} > <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/linkedin.png" alt="logo" width={20} height={20} /> </Link>
+                            <Link  href={links.snap} >     <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/snap.png" alt="logo" width={20} height={20} /> </Link>
+                            <Link  href={links.x} >        <Image className="w-full h-full hover:border-gray-400 p-[2px] border-transparent border-[1px] duration-300 "   src="/assets/social/x.png" alt="logo" width={20} height={20} /> </Link>
                         </div>
                     </div>
 
