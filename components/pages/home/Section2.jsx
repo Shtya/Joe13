@@ -18,6 +18,14 @@ export default function Section2() {
 		{name : t("Growth") , value : "+31%"} ,
 	];
 
+	const downloadPDF = () => {
+		const pdfURL = "/assets/profile.pdf"
+		const link = document.createElement("a");
+		link.href = pdfURL;
+		link.download = "JOE13 rofile.pdf"; // File name for the downloaded file
+		link.click();
+	  };
+
 	return (
 		<EffectFixed image={"/assets/imgs/section2.jpeg"} z={"z-[-100]"}>
 			<TextSlide  cn={" text-[30px] max-xl:text24 text-white text-center  "} text={t("section2")} />
@@ -32,7 +40,7 @@ export default function Section2() {
 					</div>
 				))}
 			</div>
-			<Button borderAll={true} cn="mt-[30px]" name={t("Download PDF") }/>
+			<Button onClick={downloadPDF} borderAll={true} cn="mt-[30px]" name={t("Download PDF") }/>
 		</EffectFixed>
 	);
 }
