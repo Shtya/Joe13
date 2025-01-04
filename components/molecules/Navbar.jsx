@@ -5,10 +5,18 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useState , useEffect } from 'react';
 import SwitchLang from '../atoms/SwitchLang';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar({ isclick, handleClick }) {
     const t = useTranslations('Navbar');
     const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname()
+    const [ishome , setishome] = useState();
+
+    useEffect(()=>{
+        if(pathname == "/") setishome(true)
+        else setishome(false)
+    },[pathname])
 
     // Monitor scroll position
     useEffect(() => {
@@ -71,8 +79,8 @@ export default function Navbar({ isclick, handleClick }) {
     };
 
     return (
-        <nav className={` text-white z-[10] relative `}>
-			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'} p-[20px] fixed !duration-300 !transition-all w-full `} >
+        <nav className={` text-white z-[1000] relative `}>
+			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${ishome && "bg-transparent"} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'} p-[20px] fixed !duration-300 !transition-all w-full `} >
 				<div className={` ${isclick ? "": "container"} flex items-center justify-between gap-[10px]`}>
                     <div className="flex items-center gap-[10px]  " >
                         <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon />  </div>

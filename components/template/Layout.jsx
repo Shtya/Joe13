@@ -6,6 +6,7 @@ import Navbar from '../molecules/Navbar';
 import Footer from '../molecules/Footer';
 import { Toaster } from 'react-hot-toast';
 import WhatsApp from '../WhatsApp';
+import { usePathname } from '@/navigation';
 
 
 
@@ -26,6 +27,8 @@ export default function Layout({children}) {
 	  }, []);
 
 	  const direction = isclick ? " ltr:left-[250px] rtl:right-[250px] " : "ltr:left-0 rtl:right-0"
+
+	  
 
   return (
 	<main className="overflow-x-hidden" >

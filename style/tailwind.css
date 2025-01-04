@@ -8,6 +8,31 @@
 @tailwind utilities;
 
 
+.overflow-hidden{
+	overflow: hidden !important ;
+	pointer-events: none !important ;
+}
+
+.popup{
+	pointer-events: auto !important ;
+}
+
+#fp-nav .active span {
+	background-color: #2B7BC2 !important ;
+	height: 12px !important ;
+	width: 12px !important ;
+	margin: -6px 0 0 -6px !important ;
+}
+#fp-nav span {
+	background-color: white !important ;
+	height: 6px !important ;
+	width: 6px !important ;
+	margin: -3px 0 0 -3px !important ;
+}
+
+.fp-watermark{
+	display: none !important ;
+}
 
 * {
   box-sizing: border-box;
