@@ -15,47 +15,47 @@ import "slick-carousel/slick/slick.css";
 
 
 export const settings = {
-	dots: false,
-	infinite: true,
-	arrows : false,
-	speed: 3000,
-	autoplaySpeed: 0,
-	slidesToShow: 8,
-	slidesToScroll: 1,
-	autoplay: true,
-	pauseOnHover: false,
-	pauseOnFocus: false,
-	focusOnSelect: false,
-	responsive: [
-		{
-			breakpoint: 5000,
-			settings: {
-				slidesToShow: 8,
-				slidesToScroll: 1,
-			},
-		},
-		{
-			breakpoint: 1300,
-			settings: {
-				slidesToShow: 6,
-				slidesToScroll: 1,
-			},
-		},
-		{
-			breakpoint: 830,
-			settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1,
-			},
-		},
-		{
-			breakpoint: 600,
-			settings: {
-				slidesToShow: 3,
-				slidesToScroll: 1,
-			},
-		},
-	],
+	dots: false, // Hide dots
+    infinite: true, // Enable infinite looping
+    arrows: false, // Hide arrows
+    speed: 3000, // Transition speed between slides (1 second)
+    autoplaySpeed: 0, // No delay between slides
+    slidesToShow: 2, // Default number of slides to show
+    slidesToScroll: 1, // Number of slides to scroll at a time
+    autoplay: true, // Enable autoplay
+    pauseOnHover: false, // Don't pause on hover
+    pauseOnFocus: false, // Don't pause on focus
+    cssEase: 'linear', // Linear transition for smooth animation
+    responsive: [
+        {
+            breakpoint: 1920, // Large desktop screens
+            settings: {
+                slidesToShow: 8,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 1300, // Medium desktop screens
+            settings: {
+                slidesToShow: 6,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 830, // Tablets
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+            },
+        },
+        {
+            breakpoint: 600, // Small tablets
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+            },
+        },
+    ],
 };
 
 
