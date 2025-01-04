@@ -32,7 +32,7 @@ export default function Popup({fullpageInstance , isOpen, setIsOpen, isAnimating
 
     return (
         
-        <div className=' popup fixed z-[1000] flex items-center justify-center min-h-screen bg-gray-100'>
+        <div className=' popup fixed z-[100000] flex items-center justify-center min-h-screen bg-gray-100'>
             {(isOpen || isAnimating) && (
                 <div className='fixed h-screen inset-0 z-50 flex items-center justify-center'>
                     {/* Overlay */}
