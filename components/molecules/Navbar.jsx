@@ -78,7 +78,7 @@ export default function Navbar({ isclick, handleClick }) {
     };
 
     return (
-        <nav className={` text-white z-[1000] relative `}>
+        <nav className={` text-white z-[100000] relative `}>
 			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${ishome && "bg-transparent"} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'} p-[20px] fixed !duration-300 !transition-all w-full `} >
 				<div className={` ${isclick ? "": "container"} flex items-center justify-between gap-[10px]`}>
                     <div className="flex items-center gap-[10px]  " >
@@ -89,7 +89,7 @@ export default function Navbar({ isclick, handleClick }) {
                 </div>
 			</div>
 
-            <ul className={` ${isclick ? 'ltr:left-0 rtl:right-0' : 'ltr:left-[-250px] rtl:right-[-250px]'} max-sm:overflow-y-auto !duration-300 !transition-all fixed top-0 w-[250px] h-screen bg-white text-black py-[50px] flex flex-col gap-[2px]`}>
+            <ul className={` z-[1000] ${isclick ? 'ltr:left-0 rtl:right-0' : 'ltr:left-[-250px] rtl:right-[-250px]'} max-sm:overflow-y-auto !duration-300 !transition-all fixed top-0 w-[250px] h-screen bg-white text-black py-[50px] flex flex-col gap-[2px]`}>
                 <div className=' mb-[40px] mt-[-40px] '>
                     <Image className='object-contain' src='/assets/svg/logo.svg' alt='' width={120} height={90} />
                 </div>
@@ -101,7 +101,7 @@ export default function Navbar({ isclick, handleClick }) {
                             {link.list && <ChevronDown className={` opacity-80 `} />}
                         </Link>
 
-                        <ul className='bg-white z-[100] ltr:sm:border-l-[4px] ltr:border-l-black rtl:sm:border-r-[4px] rtl:border-r-black   shadow-md top-0 hidden group-hover:block sm:absolute rtl:sm:right-[250px] ltr:sm:left-[250px]  sm:w-[200px] '>
+                        <ul className='bg-white z-[10000] ltr:sm:border-l-[4px] ltr:border-l-black rtl:sm:border-r-[4px] rtl:border-r-black   shadow-md top-0 hidden group-hover:block sm:absolute rtl:sm:right-[250px] ltr:sm:left-[250px]  sm:w-[200px] '>
                             {link.list &&
                                 link.list.map((e, i) => (
                                     <li key={i} className='text14 hover:text-white hover:bg-primary relative hover:after:h-[60%] after:top-[50%] after:translate-y-[-50%] after:absolute after:h-0 after:w-[3px] after:bg-white ltr:after:right-[5px] rtl:after:left-[5px] after:duration-300  '>

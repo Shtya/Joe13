@@ -12,6 +12,7 @@ export default function Button({ cn, loading , dataAos , name, onClick, borderAl
         <button
 			
             className={` 
+				pointer-events-auto
 			${loading ? "bg-white border-[1px]  border-primary " : ""}
 			${cn}
 			${color ? color : 'text-white border-white '}

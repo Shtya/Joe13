@@ -28,7 +28,7 @@ export default function page() {
                         </form>
                         <Button loading={loading} name={t("send")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} />
                     </div>
-=				
+				
         </EffectFixed>
     );
 }

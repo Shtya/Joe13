@@ -83,7 +83,7 @@ export default function Filter({setcategory}) {
 
 				<div   className=" mt-[40px]  flex items-center justify-end max-md:justify-center  gap-[10px] " >
 					<button onClick={handleReturn} data-aos="zoom-in"  className=" hover:opacity-80 hover:bg-primary hover:text-white hover:border-primary duration-300 w-[50px] h-[50px] border-[2px] rounded-[50%] border-primary  text-primary   flex justify-center items-center p-[8px] !cursor-pointer " > <ArrowBigLeftDash className=" w-full h-full" /> </button>
-					<div data-aos="zoom-in" > <Button name={tBtn("ConsultNow")} borderAll={true} cn={""}  />  </div>
+					<div data-aos="zoom-in" > <Button href={"/contact-us"} name={tBtn("ConsultNow")} borderAll={true} cn={""}  />  </div>
 					{/* <div data-aos="zoom-in" > <Button onClick={handleReturn} name={ "return " } borderAll={true} cn={" flex items-center justify-center w-full "}  /> </div> */}
 				</div>
 

@@ -1,13 +1,18 @@
 "use client"
 import Filter from '@/components/pages/services/Filter'
 import EffectFixed from '@/helpers/EffectFixed';
+import { hookServices } from '@/hooks/hookServices';
 import { useTranslations } from 'next-intl';
 import React , {useState} from 'react';
 
 export default function page() {
     const t = useTranslations('Services');
+    const [category, setcategory] = useState();
 
-    const [category, setcategory] = useState()
+    const { services, loading } = hookServices()
+
+    console.log(services , loading)
+
 
     return (
         <EffectFixed cn={category?.img ? "opacity-20" : ""} image={category?.img || '/assets/imgs/services.png'}>

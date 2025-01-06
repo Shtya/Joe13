@@ -33,7 +33,7 @@ export default function EffectFixed({cn , id , overlay = true ,  image, children
                 <Image className={`${!overlay && "!object-contain"} ${cn}  img-overlay`} src={image} alt='Background Image' layout='fill' objectFit='cover' />
                 {overlay && <div className='bg-overlay'></div>}
             </div>
-            <div className="container  !py-[40px] !px-[10px] flex flex-col gap-[15px] justify-center items-center"> {children} </div>
+            <div className="container  z-0 !py-[40px] !px-[10px] flex flex-col gap-[15px] justify-center items-center"> {children} </div>
         </div> 
     );
 }
