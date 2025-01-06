@@ -34,23 +34,24 @@ export default function Page() {
 
     if (FullPageLib) {
         fullpageInstance = new FullPageLib('#fullpage', {
-        licenseKey: 'YOUR_LICENSE_KEY',
+        licenseKey: '',
         navigation: true,
         navigationPosition: 'right',
-        scrollingSpeed: 700, // Adjusted for smoother scrolling
+        scrollingSpeed: 1000, 
         autoScrolling: true,
         scrollBar: true,
         fitToSection: true,
-        fitToSectionDelay: 500, // Redusced delay for quicker section fitting
+        fitToSectionDelay: 200, 
+
         responsiveWidth: 768,
         responsiveHeight: 600,
-        scrollOverflow: true,
-        parallax: true,
-        parallaxOptions: {
-          type: 'reveal',
-          percentage: 62,
-          property: 'translate',
-        },
+        scrollOverflow: false,
+        css3: true,
+
+        easing: 'easeInOutCubic',
+	    easingcss3: 'ease',
+        cards: true,
+	    cardsOptions: {perspective: 100, fadeContent: true, fadeBackground: true},
       });
       setfullpageState(fullpageInstance)
     }
@@ -60,7 +61,8 @@ export default function Page() {
         fullpageInstance.destroy('all');
       }
     };
-  }, ["ldds"]);
+
+}, ["kdsssssksssdsds"]);
 
 
   return (

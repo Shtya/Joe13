@@ -1,11 +1,10 @@
 import { activationAndEvent, manpowerAndHR, marketing, mosanadah, softwareAndAI, telecoms } from '@/helpers/constant';
-import { Link } from '@/navigation';
+import { Link, usePathname } from '@/navigation';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, MenuIcon, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useState , useEffect } from 'react';
 import SwitchLang from '../atoms/SwitchLang';
-import { usePathname } from 'next/navigation';
 
 export default function Navbar({ isclick, handleClick }) {
     const t = useTranslations('Navbar');

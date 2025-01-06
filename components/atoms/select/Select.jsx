@@ -44,8 +44,8 @@ const Select = ({cnSelect ,label , dataAos , error , trigger , watch , KEY, setV
     <div ref={selectRef} data-aos={dataAos}  className={`${classname} z-[100] relative select flex  flex-col gap-[5px]  w-full `}>
       {label && <label htmlFor={KEY} className={`text16`} > {label} </label> }
 
-      <div onClick={() => setShow(!show)} className={` ${cnSelect}  border-b-[#BCBBBF] border-b-[1px] duration-300 cursor-pointer w-full h-[50px] flex justify-between items-center`}>
-        <div className='flex items-center px-[10px] gap-[9px] P-12  '>
+      <div onClick={() => setShow(!show)} className={` ${cnSelect} pointer-events-auto  border-b-[#BCBBBF] border-b-[1px] duration-300 cursor-pointer w-full h-[50px] flex justify-between items-center`}>
+        <div className=' flex items-center px-[10px] gap-[9px] P-12  '>
           <div className={`text16 ${val?.name ? 'text-white ' : 'text-[#9ca3af]'} `}> {val?.name || place} </div>
         </div>
         <ChevronDown className={`${show ? 'rotate-[180deg]' : ''} w-[16px] h-[16px] duration-300 `} />
