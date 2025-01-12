@@ -18,10 +18,10 @@ export default function WhyChooseUs() {
 	
     return (
         <div className='w-screen'>
-            <div className='container'>
+            <div className='container !px-[40px] '>
                 <TextSlide cnParent={`w-fit ltr:mr-auto rtl:ml-auto`} cn={` text-left w-full text40 text-primary font-[600] `} text={t('whyChooseTitle')} />
 
-                <ul className={` mx-auto !px-[50px] list-decimal flex flex-col gap-[10px] mt-[30px] `}>
+                <ul className={` mx-auto !px-[10px] md:!px-[40px] list-decimal flex flex-col gap-[10px] mt-[30px] `}>
                     {data.map((item, index) => (
                         <li key={index} className='text-white  text20 mb-[10px] font-[500] w-fit '>
                             {' '}
@@ -44,7 +44,7 @@ export default function WhyChooseUs() {
 					<UploadFile setValue={setValue} watch={watch} trigger={trigger}  error={errors?.CV}   KEY={"CV"}              cnInput={""}  label={""} place={t("uploadCV")} />
 				
 				</form>
-				<div className="flex items-center justify-center "> <Button loading={loading} name={t("sendNow")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} /> </div>
+				<div className="flex items-center justify-center "> <Button disabled={loading} loading={loading} name={t("sendNow")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} /> </div>
 				
             </div>
         </div>

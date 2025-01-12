@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { X } from 'lucide-react';
 
-export default function Popup({fullpageInstance , isOpen, setIsOpen, isAnimating, setIsAnimating, children }) {
+export default function Popup({isOpen, setIsOpen, isAnimating, setIsAnimating, children }) {
     const popupRef = useRef(null);
 
-    const closePopup = () => {
+    const close = () => {
         setIsAnimating(true);
         gsap.to(popupRef.current, {
             opacity: 0,
@@ -16,10 +16,7 @@ export default function Popup({fullpageInstance , isOpen, setIsOpen, isAnimating
             onComplete: () => {
                 setIsOpen(false); // Remove the popup after the animation finishes
                 setIsAnimating(false);
-                document.body.classList.remove('overflow-hidden'); // Enable scrolling
-                if (fullpageInstance && typeof fullpageInstance.setAllowScrolling === 'function') {
-                    fullpageInstance.setAllowScrolling(true);
-                }
+                // document.body.classList.remove('overflow-hidden'); // Enable scrolling
             },
         });
     };
@@ -32,14 +29,14 @@ export default function Popup({fullpageInstance , isOpen, setIsOpen, isAnimating
 
     return (
         
-        <div className=' popup fixed z-[100000] flex items-center justify-center min-h-screen bg-gray-100'>
+        <div className=' popup fixed z-[100000000] flex items-center justify-center min-h-screen bg-gray-100'>
             {(isOpen || isAnimating) && (
                 <div className='fixed h-screen inset-0 z-50 flex items-center justify-center'>
                     {/* Overlay */}
-                    <div onClick={closePopup} className='bg-black bg-opacity-50 backdrop-blur-sm w-full h-full inset-0 absolute'></div>
+                    <div onClick={close} className='bg-black bg-opacity-50 backdrop-blur-sm w-full h-full inset-0 absolute'></div>
 
                     <div ref={popupRef}  className=' text-black relative max-h-screen overflow-y-auto w-[800px] max-w-fit mx-[20px] p-8 bg-white rounded-[10px] shadow-lg'>
-                        <div className='w-[35px] h-[35px] bg-primary cursor-pointer absolute top-[5px] ltr:right-[5px]  rtl:left-[5px] rounded-br-[10px] rounded-tl-[10px] text-white hover:text-gray-100 hover:opacity-80 duration-300 flex items-center justify-center' onClick={closePopup}> <X className='' /> </div>
+                        <div className='w-[35px] h-[35px] bg-primary cursor-pointer absolute top-[5px] ltr:right-[5px]  rtl:left-[5px] rounded-br-[10px] rounded-tl-[10px] text-white hover:text-gray-100 hover:opacity-80 duration-300 flex items-center justify-center' onClick={close}> <X className='' /> </div>
                         {children}
                     </div>
                 </div>

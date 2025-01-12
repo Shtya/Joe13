@@ -4,7 +4,7 @@ import React from "react";
 
 const WhatsApp = () => {
   return (
-    <div className=" hover:opacity-80 duration-300  fixed bottom-10 right-5 z-10 ">
+    <div className=" hover:opacity-80 duration-300  fixed bottom-10 right-5 z-[10000] ">
       <Link target="_blank" href="https://api.whatsapp.com/send?phone=966570002013" passHref>
         <div rel="noopener noreferrer">
           <Image

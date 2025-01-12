@@ -3,7 +3,7 @@ import { Globe } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
-export default function SwitchLang() {
+export default function SwitchLang({cn}) {
 	const t = useTranslations()
 	const locale = useLocale()
 
@@ -17,7 +17,7 @@ export default function SwitchLang() {
 
   return (
 	<div onClick={()=> handleLanguageChange(locale == "ar" ? "en" : "ar") } className="flex items-center gap-[10px] cursor-pointer uppercase hover:text-primary transition-all duration-300 " >
-		<Globe />
+		<Globe className={`${cn}`} />
 		<span  > {locale == "en" ? "AR" : "EN"} </span>
 	</div>
   )

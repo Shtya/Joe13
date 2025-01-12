@@ -1,11 +1,12 @@
-import { activationAndEvent, manpowerAndHR, marketing, mosanadah, softwareAndAI, telecoms } from '@/helpers/constant';
+import { activationAndEvent, erp, joe_mi, joe_x, manpowerAndHR, marketing, mosanadah, softwareAndAI, telecoms } from '@/helpers/constant';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
 
-const Footer = ({cn}) => {
+const Footer = ({cn , id}) => {
     const t = useTranslations('Footer');
+    const tNavbar = useTranslations('Navbar');
     const links = {
         facebook : "https://www.facebook.com/joe13ksa?mibextid=ZbWKwL",
         insta : "https://www.instagram.com/joe13ksa?igsh=NjV5Y254dWl6MGJy",
@@ -15,36 +16,34 @@ const Footer = ({cn}) => {
         x : "https://x.com/joe13ksa?t=DhxUu2XNItuJNGBAAAnLEA&s=09",
     }
 
+  
     const Footer = [
         {
             head : t("services"),
             links : [
-                { link : "/services?n="+marketing, name : t("socialMedia")},
-                { link : "/services?n="+softwareAndAI , name : t("services_web_app_development")},
-                { link : "/services?n="+manpowerAndHR , name : t("services_hr_outsourcing")},
-                { link : "/services?n="+activationAndEvent , name : t("services_activation")},
-                { link : "/services?n="+activationAndEvent , name : t("services_bookkeeping_zatca")},
-                { link : "/services?n="+activationAndEvent , name : t("services_display_production")},
+                { link: '/services?n=' + manpowerAndHR, name: tNavbar('manpower') },
+                { link: '/services?n=' + manpowerAndHR, name: tNavbar('hr-solutions') },
+                { link: '/services?n=' + marketing, name: tNavbar('marketing') },
+                { link: '/services?n=' + marketing, name: tNavbar('social-media') },
             ]
         },
         {
             head : t("business_units"),
             links : [
-                { link : "/services?n="+telecoms , name : t("services_telecom")},
-                { link : "/services?n="+manpowerAndHR , name : t("services_manpower_hr_solutions")},
-                { link : "/services?n="+softwareAndAI , name : t("services_software_ai")},
-                { link : "/services?n="+activationAndEvent , name : t("services_merchandising_event_management")},
-                { link : "/services?n="+mosanadah , name : t("business_unit_mosanadah")},
-                { link : "/services?n="+marketing , name : t("services_marketing")},
-            ]
+                { link: '/services?n=' + telecoms, name: tNavbar('telecom') },
+                { link: '/services?n=' + manpowerAndHR, name: tNavbar('manpower-hr-solutions') },
+                { link: '/services?n=' + softwareAndAI, name: tNavbar('software-and-ai') },
+                { link: '/services?n=' + activationAndEvent, name: tNavbar('merchandising-activation-event-management') },
+                { link: '/services?n=' + mosanadah, name: tNavbar('mosanadah') },
+                { link: '/services?n=' + marketing, name: tNavbar('marketing') },]
         },
 
         {
             head : t("ourProduct"),
             links : [
-                { link : "/services?n="+mosanadah , name : t("services_erp")},
-                { link : "/services?n="+softwareAndAI , name : t("business_unit_joemi")},
-                { link : "/services?n="+softwareAndAI , name : t("business_unit_joex")},
+                { link: '/services?n=' + erp   , name: tNavbar('erp') },
+                { link: '/services?n=' + joe_mi, name: tNavbar('joe-mi') },
+                { link: '/services?n=' + joe_x , name: tNavbar('joe-x') },
             ]
         },
 
@@ -56,7 +55,7 @@ const Footer = ({cn}) => {
     }
     
     return (
-            <footer className={`bg-white z-[1000] text-black py-[50px] ${cn} `} >
+            <footer id={id} className={`  bg-white  z-[1000] text-black py-[50px] ${cn} `} >
                 <div className=" px-[10px] max-w-[1500px] w-full mx-auto  grid grid-cols-6 gap-[40px] max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 ">
 
 

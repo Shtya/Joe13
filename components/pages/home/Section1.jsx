@@ -11,7 +11,7 @@ export default function Section1() {
 	<div className=" section bg-black   " > 
 		<div className="container mx-auto center min-h-screen ">
 
-			<div className=" flex items-center gap-[20px] " >
+			<div className=" flex items-center gap-[20px] ltr:flex-row-reverse " >
 				<Image  data-aos="zoom-out"   className=" max-sm:w-[50px] max-sm:h-[50px] " src="/assets/imgs/arrow-right.png" alt="" width={100} height={100} />
 				<Image  data-aos="zoom-in"   className="object-contain  max-sm:w-[150px] max-sm:h-[50px]  "  src="/assets/imgs/logo.png" alt="" width={300} height={100} />
 				<Image  data-aos="zoom-out"   className=" max-sm:w-[50px] max-sm:h-[50px] " src="/assets/imgs/arrow-left.png" alt="" width={100} height={100} />

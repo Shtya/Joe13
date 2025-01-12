@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 
-export default function EffectFixed({cn , id , overlay = true ,  image, children, z }) {
+export default function EffectFixed({cn , cnParent , id , overlay = true ,  image, children, z }) {
     const [isInView, setIsInView] = useState(false); // Initially, the section is not in view
     const sectionRef = useRef(null);
 
@@ -33,7 +33,7 @@ export default function EffectFixed({cn , id , overlay = true ,  image, children
                 <Image className={`${!overlay && "!object-contain"} ${cn}  img-overlay`} src={image} alt='Background Image' layout='fill' objectFit='cover' />
                 {overlay && <div className='bg-overlay'></div>}
             </div>
-            <div className="container  z-0 !py-[40px] !px-[10px] flex flex-col gap-[15px] justify-center items-center"> {children} </div>
+            <div className={`container  z-0 !py-[40px] max-sm:!px-[30px] !px-[20px] flex flex-col gap-[15px] justify-center items-center ${cnParent} `}> {children} </div>
         </div> 
     );
 }

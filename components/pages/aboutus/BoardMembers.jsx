@@ -36,26 +36,45 @@ export default function BoardMembers() {
 
     
     return (
-        <EffectFixed overlay={false} image={'/assets/aboutus/1.png'} z={'z-[-100]'}>
-            {<TextSlide cnParent={`  ${isExpanded ? 'w-full flex items-start justify-start text-primary  ' : ''}  mb-[60px] max-md:mb-[30px]  `} cn={` ${!isExpanded ? 'text-left' : '!text-primary rtl:text-right ltr:text-left '} w-full text40 text-white `} text={t('boardMembersTitle')} />}
+        <EffectFixed cnParent={""} overlay={false} image={'/assets/aboutus/1.png'} z={'z-[-100]'}>
+            {<TextSlide cnParent={`  ${isExpanded ? '  text-primary  ' : ''}  mb-[60px] max-md:mb-[30px]  `} cn={` ${!isExpanded ? '' : '!text-primary  '} w-full text40 text-white `} text={t('boardMembersTitle')} />}
 
-            <div className='founders flex flex-wrap  gap-[50px] flex-row-reverse justify-center '>
+            <div className=' founders w-full flex flex-col gap-[50px] justify-start items-start px-[20px] '>
+                {t
+                    .raw('boardMembers')
+                    .slice(0, isExpanded ? 20 : 4)
+                    .map((e, i) => (
+                        <div key={i} className='flex max-md:flex-col items-center text-white gap-[40px] max-md:gap-[20px] '>
+                            <div className='cover  w-full max-w-[150px] max-sm:w-[100px] max-sm:h-[100px] h-[150px] max-md:max-w-[150px] max-md:h-[150px] rounded-[50%] overflow-hidden ' style={{ boxShadow: '1px 8px 18px 0px #FFFFFF1A , 5px 32px 32px 0px #FFFFFF17 ,10px 71px 43px 0px #FFFFFF0D , 19px 127px 51px 0px #FFFFFF03' }}>
+                                <Image className=' object-contain bg-white w-full h-full' src={`/assets/aboutus/person${i + 1}.png`} alt={e.name} width={200} height={200} />{' '}
+                            </div>
+                            <div className=' flex flex-col gap-[3px] items-start '>
+                                <div className="flex max-sm:flex-col max-sm:gap-[0px] items-center gap-[10px]  max-md:mx-auto " >
+                                    <TextSlide cnParent={'text20  '} text={e?.name} />
+                                    <TextSlide cnParent={'text16 font-[400] text-primary  '} text={`( ${e?.position} )`} />
+                                </div>
+                                <TextSlide cnParent={'text14 max-md:text-center max-w-[700px] opacity-50  w-full  '} text={e?.description} />
+                            </div>
+                        </div>
+                    ))}
+            </div>
+            
+            {/* <div className='founders grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1  gap-[50px] justify-center px-[20px] '>
                 {t
                     .raw('boardMembers')
                     .slice(0, 4)
                     .map((e, i) => (
                         <div key={i} className='flex flex-col items-center text-white gap-[10px] '>
-                            <div className='cover w-full max-w-[200px] h-[200px] max-lg:max-w-[150px] max-lg:h-[150px] max-md:max-w-[100px] max-md:h-[100px] rounded-[50%] overflow-hidden ' style={{ boxShadow: '1px 8px 18px 0px #FFFFFF1A , 5px 32px 32px 0px #FFFFFF17 ,10px 71px 43px 0px #FFFFFF0D , 19px 127px 51px 0px #FFFFFF03' }}>
+                            <div className='cover  w-full max-w-[200px] h-[200px] max-lg:max-w-[200px] max-lg:h-[200px] max-md:max-w-[150px] max-md:h-[150px] rounded-[50%] overflow-hidden ' style={{ boxShadow: '1px 8px 18px 0px #FFFFFF1A , 5px 32px 32px 0px #FFFFFF17 ,10px 71px 43px 0px #FFFFFF0D , 19px 127px 51px 0px #FFFFFF03' }}>
                                 <Image className=' object-contain bg-white w-full h-full' src={`/assets/aboutus/person${i + 1}.png`} alt={e.name} width={200} height={200} />{' '}
                             </div>
 							<TextSlide cn={'text20 text-center '} text={e.name}   />
 							<TextSlide cn={"text14 text-center  "} cnParent={"mt-[-10px] "}  text={e.position}   />
-                            {/* <div className=> {e.name} </div> */}
                         </div>
                     ))}
-            </div>
+            </div> */}
 
-            <div ref={listRef} className=' mt-[100px] text-white overflow-hidden opacity-0' style={{ height: 0 }}>
+            {/* <div ref={listRef} className=' mt-[100px] text-white overflow-hidden opacity-0' style={{ height: 0 }}>
                 <div className='w-screen'>
                     <div className={`container mx-auto flex flex-col gap-[60px]  `}>
                         {t.raw('boardMembers').map((item, index) => (
@@ -67,7 +86,7 @@ export default function BoardMembers() {
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <Button onClick={handleReadMore} borderAll={true} cn='mt-[20px]' name={isExpanded ? tBtn("showLess") : tBtn("readMore")} />
         </EffectFixed>

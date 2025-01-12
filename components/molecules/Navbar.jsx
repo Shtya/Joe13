@@ -1,4 +1,4 @@
-import { activationAndEvent, manpowerAndHR, marketing, mosanadah, softwareAndAI, telecoms } from '@/helpers/constant';
+import { activationAndEvent,erp, joe_mi, joe_x, manpowerAndHR, marketing, mosanadah, softwareAndAI, telecoms } from '@/helpers/constant';
 import { Link, usePathname } from '@/navigation';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, MenuIcon, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -45,9 +45,9 @@ export default function Navbar({ isclick, handleClick }) {
             value: '',
             name: t('our-products'),
             list: [
-                { value: '/services?n=' + mosanadah, name: t('erp') },
-                { value: '/services?n=' + softwareAndAI, name: t('joe-mi') },
-                { value: '/services?n=' + softwareAndAI, name: t('joe-x') },
+                { value: '/services?n=' + erp   , name: t('erp') },
+                { value: '/services?n=' + joe_mi, name: t('joe-mi') },
+                { value: '/services?n=' + joe_x , name: t('joe-x') },
             ],
         },
         {
@@ -55,12 +55,12 @@ export default function Navbar({ isclick, handleClick }) {
             name: t('our-services'),
             list: [
                 { value: '/services?n=' + manpowerAndHR, name: t('manpower') },
-                { value: '/services?n=' + softwareAndAI, name: t('hr-solutions') },
+                { value: '/services?n=' + manpowerAndHR, name: t('hr-solutions') },
                 { value: '/services?n=' + marketing, name: t('marketing') },
                 { value: '/services?n=' + marketing, name: t('social-media') },
             ],
         },
-        { value: '/#ourPartners', name: t('our-partners') },
+        { value: '/?section=partners', name: t('our-partners') },
         { value: '/blogs', name: t('blogs') },
         { value: '/join-us', name: t('join-us') },
         { value: '/about-us', name: t('about-us') },
@@ -77,15 +77,44 @@ export default function Navbar({ isclick, handleClick }) {
         }
     };
 
+
+    const [isFooterInView, setIsFooterInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target.id === 'footer2') {
+            setIsFooterInView(entry.isIntersecting);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when at least 10% of the footer is visible
+      }
+    );
+
+    const footerElement = document.getElementById('footer2');
+    if (footerElement) {
+      observer.observe(footerElement);
+    }
+
+    return () => {
+      if (footerElement) {
+        observer.unobserve(footerElement);
+      }
+    };
+  }, []);
+
     return (
         <nav className={` text-white z-[100000] relative `}>
 			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${ishome && "bg-transparent"} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'} p-[20px] fixed !duration-300 !transition-all w-full `} >
 				<div className={` ${isclick ? "": "container"} flex items-center justify-between gap-[10px]`}>
                     <div className="flex items-center gap-[10px]  " >
-                        <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon />  </div>
-                        <SwitchLang />
+                        <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon className={isFooterInView ? "text-black" : "text-white"} />  </div>
+                        <SwitchLang cn={`${isFooterInView ? "text-black" : "text-white"}`} />
                     </div>
-                    <Link href="/" > <Image className="w-[160px] max-md:w-[100px] " src="/assets/svg/logo-white.svg" width={160} height={60} alt="" /> </Link>
+                    <Link href="/" className="outline-none" > <Image className="w-[160px] max-md:w-[100px] " src={`/assets/svg/${isFooterInView ? 'logo' : 'logo-white'}.svg`} width={160} height={60} alt="" /> </Link>
                 </div>
 			</div>
 

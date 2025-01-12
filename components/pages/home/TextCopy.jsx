@@ -8,24 +8,21 @@ import { gsap } from 'gsap';
 import { useTranslations } from 'next-intl';
 import Popup from '@/components/molecules/Popup';
 
-export default function TextCopy({ fullpageInstance , more, btn = true, overlay = true, hidden, component, list, data, grid, img, icon, title, description }) {
+export default function TextCopy({  more, btn = true, overlay = true, hidden, component, list, data, grid, img, icon, title, description }) {
     const t = useTranslations();
     const [isExpanded, setIsExpanded] = useState(false); // State to track if the list is expanded
 
     const [isOpen, setIsOpen] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+
     const openPopup = () => {
         setIsOpen(true);
         setIsAnimating(true);
-        document.body.classList.add('overflow-hidden'); // Disable scrolling
-        console.log(fullpageInstance)
-        if (fullpageInstance && typeof fullpageInstance.setAllowScrolling === 'function') {
-            fullpageInstance.setAllowScrolling(false);
-        }
+        // document.body.classList.add('overflow-hidden'); 
     };
 
     return (
-        <EffectFixed overlay={overlay} image={img} z={'z-[-100]'}>
+        <EffectFixed overlay={overlay} image={img} z={'z-[-10000]'}>
             {icon && (
                 <div className={`${isExpanded ? ' h-0 overflow-hidden ' : ''}  transition-all duration-300 `}>
                     <Image className=' object-contain ' src='/assets/imgs/logo2.png' alt='' width={200} height={80} />
@@ -36,7 +33,7 @@ export default function TextCopy({ fullpageInstance , more, btn = true, overlay 
             {icon && <div className={`${isExpanded ? 'w-full flex items-start justify-start !text-primary rtl:text-right ltr:text-left' : 'hidden'} text-center duration-300 transition-all w-full text40 text-white `}> {title} </div>}
             <TextSlide cnParent={` ${hidden && isExpanded && 'hidden'} ${isExpanded ? 'w-full flex items-start justify-start mt-[-15px] ' : ''}`} cn={` ${!isExpanded ? 'text-center' : 'text18 rtl:text-right ltr:text-left'} w-full text22 text-white `} text={description} />
 
-            <Popup fullpageInstance={fullpageInstance} isOpen={isOpen} setIsOpen={setIsOpen} isAnimating={isAnimating} setIsAnimating={setIsAnimating}>
+            <Popup isOpen={isOpen} setIsOpen={setIsOpen} isAnimating={isAnimating} setIsAnimating={setIsAnimating}>
                 {list && (
                     <ul className={`container mx-auto list-disc grid ${grid ? 'grid-cols-2' : 'grid-cols-1'} max-md:grid-cols-1 gap-y-[10px] gap-x-[50px] `}>
                         {list.map((item, index) => (

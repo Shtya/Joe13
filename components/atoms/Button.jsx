@@ -4,13 +4,12 @@ import { useRouter } from '@/navigation';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-export default function Button({ cn, loading , dataAos , name, onClick, borderAll, href, color }) {
+export default function Button({ cn, loading , disabled , name, onClick, borderAll, href, color }) {
     const router = useRouter();
-	const t = useTranslations()
 
     return (
         <button
-			
+		disabled={disabled}
             className={` 
 				pointer-events-auto
 			${loading ? "bg-white border-[1px]  border-primary " : ""}
