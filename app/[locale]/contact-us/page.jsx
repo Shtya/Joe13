@@ -16,7 +16,7 @@ export default function page() {
     return (
         <EffectFixed image={'/assets/imgs/contactus.png'}>
                 <TextSlide cnParent={`w-fit ltr:mr-auto max-sm:mx-auto rtl:ml-auto  `} cn={` text-left w-full text40 font-[600] `} text={t('contactUsTitle')} />
-                <TextSlide cnParent={`w-fit ltr:mr-auto max-sm:mx-auto rtl:ml-auto mt-[-10px] mb-[50px]  `} cn={` text-left w-full text24 font-[400] `} text={t('stayConnected')} />
+                <TextSlide cnParent={`w-fit ltr:mr-auto max-sm:mx-auto rtl:ml-auto mt-[-10px] mb-[50px]  `} cn={` text-left max-sm:text-center w-full text24 font-[400] `} text={t('stayConnected')} />
 
                     <div className="w-full z-[10000000] relative ">
                         <form className={` grid grid-cols-3 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-y-[30px] gap-x-[60px]  `} >
@@ -26,7 +26,7 @@ export default function page() {
                             <TextArea dataAos={"fade-up"} register={register("message")}           error={errors?.message}     cnInput={""}  label={""} place={t("message")} />
                             
                         </form>
-                        <Button loading={loading} name={t("send")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} />
+                        <div data-aos="fade-up" > <Button disabled={loading} loading={loading} name={t("send")} onClick={submit} borderAll={true}  cn={"mb-[150px] mt-[40px]   "} /> </div>
                     </div>
 				
         </EffectFixed>

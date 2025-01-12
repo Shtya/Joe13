@@ -1,11 +1,23 @@
 'use client';
+import { useLayoutEffect, useEffect, useRef } from 'react';
 import Section1 from '@/components/pages/home/Section1';
 import Section2 from '@/components/pages/home/Section2';
 import Section3 from '@/components/pages/home/Section3';
 import Section4 from '@/components/pages/home/Section4';
 import TextCopy from '@/components/pages/home/TextCopy';
-import { hookAnimation } from '@/hooks/hookAnimation';
+// import { hookAnimation } from '@/hooks/hookAnimation';
 import { useTranslations } from 'next-intl';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, EffectCreative, Autoplay, Mousewheel } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/effect-creative';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/mousewheel';
+import Footer from '@/components/molecules/Footer';
+import { useSearchParams } from 'next/navigation';
 
 export default function Page() {
     const t = useTranslations();
@@ -17,23 +29,86 @@ export default function Page() {
     const data10 = t.raw('data10');
     const data11 = t.raw('data11');
 
-    const {fullpageInstance} = hookAnimation()
+    const swiperRef = useRef(null);
+    const config = {
+        modules: [EffectCreative, Pagination, Navigation, Autoplay, Mousewheel],
+        effect: 'creative',
+        creativeEffect: {
+            prev: {
+                shadow: true,
+                translate: [0, '-100%', -400],
+            },
+            next: {
+                translate: [0, '100%', 0],
+            },
+        },
+        direction: 'vertical',
+        speed: 1200,
+        mousewheel: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+    };
 
+    const searchParams = useSearchParams();
+    const name = searchParams.get('section');
+
+    const goToSlide = index => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideTo(index);
+        }
+    };
+
+    useEffect(() => {
+        if (name === 'partners') {
+            goToSlide(2);
+        }
+    }, [name]);
 
     return (
-        <div id='fullpage' className='px-[30px]'>
-            <Section1 />
-            <Section2 />
-            <Section3 />
-            <Section4 />
+        <div>
+            <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
+                <SwiperSlide className='h-screen'>
+                    <Section1 />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <Section2 />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <Section3 />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <Section4 />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} />
+                </SwiperSlide>
+                <SwiperSlide className='h-screen'>
+                    <TextCopy img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} />
+                </SwiperSlide>
+                <SwiperSlide className='bg-white !flex flex-col justify-center items-center '>
+                    <Footer id={'footer2'} />
+                </SwiperSlide>
+            </Swiper>
 
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} />
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} />
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} />
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} />
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} />
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} />
-            <TextCopy fullpageInstance={fullpageInstance} img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} />
+            <div className='swiper-pagination'></div>
         </div>
     );
 }
