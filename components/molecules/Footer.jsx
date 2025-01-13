@@ -56,7 +56,7 @@ const Footer = ({cn , id}) => {
     
     return (
             <footer id={id} className={`  bg-white  z-[1000] text-black py-[50px] ${cn} `} >
-                <div className=" px-[10px] max-w-[1500px] w-full mx-auto  grid grid-cols-6 gap-[40px] max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 ">
+                <div className=" lg:pr-[70px] px-[10px] max-w-[1500px] w-full mx-auto  grid grid-cols-6 gap-[40px] max-xl:grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 ">
 
 
                     <div className="col">

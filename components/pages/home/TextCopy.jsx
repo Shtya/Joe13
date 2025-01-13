@@ -8,7 +8,7 @@ import { gsap } from 'gsap';
 import { useTranslations } from 'next-intl';
 import Popup from '@/components/molecules/Popup';
 
-export default function TextCopy({  more, btn = true, overlay = true, hidden, component, list, data, grid, img, icon, title, description }) {
+export default function TextCopy({closeTab , setcloseTab,  more, btn = true, overlay = true, hidden, component, list, data, grid, img, icon, title, description }) {
     const t = useTranslations();
     const [isExpanded, setIsExpanded] = useState(false); // State to track if the list is expanded
 
@@ -18,6 +18,7 @@ export default function TextCopy({  more, btn = true, overlay = true, hidden, co
     const openPopup = () => {
         setIsOpen(true);
         setIsAnimating(true);
+        setcloseTab?.(false)
 
         document.querySelector("nav").style.zIndex = "1"
         const ele = document.querySelector(".swiper-pagination")
@@ -38,11 +39,11 @@ export default function TextCopy({  more, btn = true, overlay = true, hidden, co
                 </div>
             )}
 
-            {!icon && <TextSlide cnParent={` ${hidden && isExpanded && 'hidden'} mb-[10px]  ${isExpanded ? 'w-full flex items-start justify-start text-primary  ' : ''}   `} cn={` ${!isExpanded ? 'text-center' : '!text-primary rtl:text-right ltr:text-left'} w-full text40 text-white `} text={title} />}
+            {!icon && <TextSlide cnParent={` ${hidden && isExpanded && 'hidden'}   ${isExpanded ? 'w-full flex items-start justify-start text-primary  ' : ''}   `} cn={` ${!isExpanded ? 'text-center' : '!text-primary rtl:text-right ltr:text-left'} w-full text40 text-white `} text={title} />}
             {icon && <div className={`${isExpanded ? 'w-full flex items-start justify-start !text-primary rtl:text-right ltr:text-left' : 'hidden'} text-center duration-300 transition-all w-full text40 text-white `}> {title} </div>}
-            <TextSlide cnParent={` ${hidden && isExpanded && 'hidden'} ${isExpanded ? ' z-[1] w-full flex items-start justify-start mt-[-15px] ' : ''}`} cn={` ${!isExpanded ? 'text-center' : 'text18 rtl:text-right ltr:text-left'} w-full text22 text-white `} text={description} />
+            <TextSlide cnParent={` !mt-[-5px] ${hidden && isExpanded && 'hidden'} ${isExpanded ? '  z-[1] w-full flex items-start justify-start ' : ''}`} cn={` ${!isExpanded ? 'text-center' : 'text18 rtl:text-right ltr:text-left'} w-full text22 text-white `} text={description} />
 
-            <Popup isOpen={isOpen} setIsOpen={setIsOpen} isAnimating={isAnimating} setIsAnimating={setIsAnimating}>
+            <Popup closeTab={closeTab} isOpen={isOpen} setIsOpen={setIsOpen} isAnimating={isAnimating} setIsAnimating={setIsAnimating}>
                 {list && (
                     <ul className={`md:container mx-auto list-disc grid ${grid ? 'grid-cols-2' : 'grid-cols-1'} max-md:grid-cols-1 gap-y-[10px] gap-x-[50px] `}>
                         {list.map((item, index) => (
@@ -74,7 +75,7 @@ export default function TextCopy({  more, btn = true, overlay = true, hidden, co
                 {component && <div className=''>{component}</div>}
             </Popup>
 
-            {btn && <Button onClick={openPopup} borderAll={true} cn=' z-[100] mt-[0px]' name={isExpanded ? t('showLess') : more || t('readMore')} />}
+            {btn && <Button onClick={openPopup} borderAll={true} cn=' z-[100] mt-[15px]' name={isExpanded ? t('showLess') : more || t('readMore')} />}
         </EffectFixed>
     );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { X } from 'lucide-react';
 
-export default function Popup({isOpen, setIsOpen, isAnimating, setIsAnimating, children }) {
+export default function Popup({closeTab ,isOpen, setIsOpen, isAnimating, setIsAnimating, children }) {
     const popupRef = useRef(null);
 
     const close = () => {
@@ -25,6 +25,11 @@ export default function Popup({isOpen, setIsOpen, isAnimating, setIsAnimating, c
         });
     };
 
+    useEffect(()=> {
+        if(closeTab == true){
+            close()
+        }
+    } ,[closeTab])
     useEffect(() => {
         if (isOpen && popupRef.current) {
             gsap.fromTo(popupRef.current, { opacity: 0, y: -50, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power2.out' });
