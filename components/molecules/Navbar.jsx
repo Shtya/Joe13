@@ -84,7 +84,8 @@ export default function Navbar({ isclick, handleClick }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target.id === 'footer2') {
+          if (entry.target.id == 'footer2') {
+            
             setIsFooterInView(entry.isIntersecting);
           }
         });
@@ -104,7 +105,7 @@ export default function Navbar({ isclick, handleClick }) {
         observer.unobserve(footerElement);
       }
     };
-  }, []);
+  }, [pathname]);
 
     return (
         <nav className={` text-white z-[100000] relative `}>

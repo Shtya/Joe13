@@ -3,7 +3,7 @@
 import BoardMembers from '@/components/pages/aboutus/BoardMembers';
 import Text from '@/components/pages/home/Text';
 import { useTranslations } from 'next-intl';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef , useState , useEffect } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCreative, Autoplay, Mousewheel } from 'swiper/modules';
@@ -14,59 +14,35 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/mousewheel';
 import Footer from '@/components/molecules/Footer';
+import VerticalSlider from '@/helpers/VerticalSlider';
 
-export default function page() {
+
+export default function Page() {
     const swiperRef = useRef(null);
-
-    const handleScrollInside = swiper => {
-        let scrollTimeout;
-
-        swiper.on('slideChangeTransitionEnd', () => {
-            swiper.mousewheel.disable();
-            swiper.allowTouchMove = true;
-
-            const activeSlide = document.querySelector('.swiper-slide-active');
-            const hasVerticalScrollbar = activeSlide.scrollHeight > activeSlide.clientHeight;
-
-            if (hasVerticalScrollbar) {
-                const scrollDifferenceTop = activeSlide.scrollHeight - activeSlide.swiperSlideSize;
-
-                if (activeSlide.scrollTop === 0) activeSlide.scrollTop += 1;
-                if (activeSlide.scrollTop === scrollDifferenceTop) activeSlide.scrollTop -= 2;
-
-                const slowScroll = () => {
-                    if (scrollTimeout) clearTimeout(scrollTimeout);
-
-                    scrollTimeout = setTimeout(() => {
-                        if (activeSlide.scrollTop <= 0 || scrollDifferenceTop - activeSlide.scrollTop <= 1) {
-                            swiper.mousewheel.enable();
-                            swiper.allowTouchMove = true;
-                            activeSlide.removeEventListener('scroll', slowScroll);
-                        } else {
-                            const step = Math.sign(scrollDifferenceTop - activeSlide.scrollTop) * 0.5; // Slower step
-                            activeSlide.scrollTop += step;
-                        }
-                    }, 1000);
-                };
-
-                activeSlide.addEventListener('scroll', slowScroll, { passive: true });
-            } else {
-                swiper.mousewheel.enable();
-                swiper.allowTouchMove = true;
-            }
-        });
-
-        // Trigger scroll check on the first load
-        const activeSlide = document.querySelector('.swiper-slide-active');
-        const hasVerticalScrollbar = activeSlide.scrollHeight > activeSlide.clientHeight;
-        if (hasVerticalScrollbar) {
-            swiper.emit('slideChangeTransitionEnd');
-        }
-    };
+    const {handleScrollInside} = VerticalSlider()
+    const [isLastSlide, setIsLastSlide] = useState(false);
 
     useEffect(() => {
+        const ele = document.querySelectorAll(".swiper-pagination-bullet")
+        if (isLastSlide) {
+            if(ele)
+                 ele.forEach(element => {
+                    element.classList.add("black")
+                    });
+        }
+        else if(ele) {
+            ele.forEach(element => {
+                element.classList?.remove("black")
+                });
+        }
+    
+    }, [isLastSlide ]);
+
+    
+    useEffect(() => {
         if (swiperRef.current && swiperRef.current.swiper) {
-            handleScrollInside(swiperRef.current.swiper);
+            const swiperInstance = swiperRef.current.swiper;
+            handleScrollInside(swiperInstance);
         }
     }, []);
 
@@ -90,10 +66,12 @@ export default function page() {
             type: 'bullets',
             clickable: true,
         },
-        // onSlideChange: () => setScrollEnabled(false),
-        mousewheel: true,
+        onSlideChange: swiper => {
+            const isLast = swiper.activeIndex === swiper.slides.length - 1;
+            setIsLastSlide(isLast);
+        },
         on: {
-            init: swiper => {
+            init: (swiper) => {
                 handleScrollInside(swiper);
             },
         },
@@ -101,60 +79,17 @@ export default function page() {
 
     const t = useTranslations('aboutUs');
 
-    const [IsLargeScreen, setIsLargeScreen] = useState();
-
-    useEffect(() => {
-        const handleResize = () => {
-            const isMobile = window.innerWidth < 768; // `md` breakpoint: 768px
-            setIsLargeScreen(!isMobile);
-
-            if (swiperRef.current) {
-                const swiperInstance = swiperRef.current.swiper;
-                if (isMobile) {
-                    swiperInstance?.destroy(); // Destroy Swiper on small screens
-                } else {
-                    swiperInstance?.init(); // Reinitialize Swiper on larger screens
-                }
-            }
-        };
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     return (
         <div>
-            {IsLargeScreen ? (
-                <>
-                    <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
-                        <SwiperSlide>
-                            <Text btn={false} overlay={false} img={`/assets/aboutus/1.png`} title={t('aboutUsTitle')} description={t('aboutUs')} />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Text btn={false} img={`/assets/aboutus/2.png`} title={t('ourVisionTitle')} description={t('ourVision')} />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Text btn={false} img={`/assets/aboutus/3.png`} title={t('ourMissionTitle')} description={t('ourMission')} />
-                        </SwiperSlide>
-                        <SwiperSlide className='overflow-auto'>
-                            <BoardMembers />
-                        </SwiperSlide>
-                        <SwiperSlide className='bg-white overflow-auto  !flex flex-col md:justify-center  max-md:pt-[50px] items-center '>
-                            <Footer id={'footer2'} />
-                        </SwiperSlide>
-                    </Swiper>
+            <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
+                <SwiperSlide> <Text btn={false} overlay={false} img={`/assets/aboutus/1.png`} title={t('aboutUsTitle')} description={t('aboutUs')} /> </SwiperSlide>
+                <SwiperSlide className='overflow-auto py-[100px] '> <BoardMembers /> </SwiperSlide>
+                <SwiperSlide> <Text btn={false} img={`/assets/aboutus/2.png`} title={t('ourVisionTitle')} description={t('ourVision')} /> </SwiperSlide>
+                <SwiperSlide> <Text btn={false} img={`/assets/aboutus/3.png`} title={t('ourMissionTitle')} description={t('ourMission')} /> </SwiperSlide>
+                <SwiperSlide className='footer-slide bg-white overflow-auto h-[100vh] !flex flex-col md:justify-center max-md:pt-[50px] items-center'> <Footer id={'footer2'} /> </SwiperSlide>
+            </Swiper>
 
-                    <div className='swiper-pagination'></div>
-                </>
-            ) : (
-                <>
-                    <Text btn={false} overlay={false} img={`/assets/aboutus/1.png`} title={t('aboutUsTitle')} description={t('aboutUs')} />
-                    <Text btn={false} img={`/assets/aboutus/2.png`} title={t('ourVisionTitle')} description={t('ourVision')} />
-                    <Text btn={false} img={`/assets/aboutus/3.png`} title={t('ourMissionTitle')} description={t('ourMission')} />
-                    <BoardMembers />
-                    <Footer id={'footer2'} />
-                </>
-            )}
+            <div className='swiper-pagination'></div>
         </div>
     );
 }

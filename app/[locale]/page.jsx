@@ -95,7 +95,7 @@ export default function Page() {
                 });
         }
 
-    }, [isLastSlide , "dds"]);
+    }, [isLastSlide ]);
 
     const [finish , setfinish ] = useState(false)
 
