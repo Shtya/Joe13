@@ -7,12 +7,15 @@ import Footer from '../molecules/Footer';
 import { Toaster } from 'react-hot-toast';
 import WhatsApp from '../WhatsApp';
 import { usePathname } from '@/navigation';
+import PreLoading from '../atoms/preLoading';
 
 export default function Layout({ children }) {
     const [isclick, setisclick] = useState(false);
     const handleClick = () => {
         setisclick(!isclick);
     };
+
+    const [start , setstart ] = useState(false);
 
     useEffect(() => {
         AOS.init({
@@ -21,25 +24,37 @@ export default function Layout({ children }) {
             easing: 'ease-in-out',
             once: true,
         });
+
+        setTimeout(() => {
+            setstart(true)
+        }, 4500);
     }, []);
 
     const direction = isclick ? ' ltr:left-[250px] rtl:right-[250px] ' : 'ltr:left-0 rtl:right-0';
 
     const pathname = usePathname();
-	console.log(pathname)
-
     const hideFooter = pathname === '/about-us' || pathname === '/';
 
     return (
         <main className='overflow-x-hidden'>
-            <Navbar isclick={isclick} handleClick={handleClick} />
-            <WhatsApp />
+            {
+                start ? 
+                <>
+                <Navbar isclick={isclick} handleClick={handleClick} />
+                <WhatsApp />
+    
+                <div className={`relative ${direction}  duration-300 transition-all `}> {children} </div>
+                {!hideFooter && <Footer id='footer' cn={`relative ${direction} duration-300 transition-all`} />}
+    
+                {isclick && <div onClick={handleClick} className='bg-black z-[1000] fixed bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
+                <Toaster position='bottom-center' duration={9000} />
+                
+                </>
 
-            <div className={`relative ${direction}  duration-300 transition-all `}> {children} </div>
-            {!hideFooter && <Footer id='footer' cn={`relative ${direction} duration-300 transition-all`} />}
+                : <PreLoading />
+            }
 
-            {isclick && <div onClick={handleClick} className='bg-black z-[1000] fixed bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
-            <Toaster position='bottom-center' duration={9000} />
+            
         </main>
     );
 }

@@ -115,7 +115,7 @@ export default function Page() {
                     </Swiper>
                     <div className='swiper-pagination'></div>
 
-                    <PreLoading />
+                    {/* <PreLoading /> */}
         </div>
     );
 }
