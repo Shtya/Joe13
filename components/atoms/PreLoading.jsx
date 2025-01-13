@@ -31,6 +31,7 @@
 // export default PreLoading;
 
 
+"use client"
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import ParticleGround from 'particleground.ts';
