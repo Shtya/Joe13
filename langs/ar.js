@@ -231,7 +231,8 @@ export default {
         "branch_office_egypt": "مصر",
         "branch_office_riyadh": "الرياض",
         "branch_office_makkah": "مكة",
-        "branch_office_dammam": "الدمام"
+        "branch_office_dammam": "الدمام" ,
+        "branch_office_jeddah": "جدة"
     },
 
     btn: 'اقرأ المزيد',

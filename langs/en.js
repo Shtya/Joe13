@@ -234,6 +234,7 @@ export default {
         branch_office_riyadh: 'Riyadh',
         branch_office_makkah: 'Makkah',
         branch_office_dammam: 'Dammam',
+        branch_office_jeddah: 'Jeddah',
     },
 
     btn: 'read more ',

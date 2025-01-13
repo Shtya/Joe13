@@ -19,7 +19,7 @@ export default function page() {
                 ? null
                 : <>
                     <div data-aos={category == null && "fade-down"} className={'w-fit mx-auto mb-[10px] text-center font-[700]  max-md:text24 text40 '} > {t("blogs")} </div>
-                    <div data-aos={category == null && "fade-down"} className={` text-center  w-full text20  text-balance`} > {t("blogsDescription")} </div>
+                    <div data-aos={category == null && "fade-down"} className={` text-center  w-full text20 max-md:text16  text-balance`} > {t("blogsDescription")} </div>
                 </>
             }
             {!category && <Filter skeltonCount={3}  services={blogs}  loading={loading}  setcategory={setcategory} />}

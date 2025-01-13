@@ -108,7 +108,7 @@ export default function Navbar({ isclick, handleClick }) {
 
     return (
         <nav className={` text-white z-[100000] relative `}>
-			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${ishome && "bg-transparent"} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'} p-[20px] fixed !duration-300 !transition-all w-full `} >
+			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${ishome && "bg-transparent"} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'} max-md:px-[0px] p-[20px] fixed !duration-300 !transition-all w-full `} >
 				<div className={` ${isclick ? "": "container"} flex items-center justify-between gap-[10px]`}>
                     <div className="flex items-center gap-[10px]  " >
                         <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon className={isFooterInView ? "text-black" : "text-white"} />  </div>

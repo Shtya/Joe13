@@ -211,6 +211,8 @@ html {
     border-radius: 0 5px 0 5px !important;
     transition: .3s;
     background-color: white !important;
+    padding-right: 20px;
+    @apply lg:!mr-[20px]
   }
   
   .swiper-pagination-bullet-active{

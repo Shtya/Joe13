@@ -127,7 +127,7 @@ export default function Filter({ setcategory , skeltonCount , showItem , service
                           </div>
                       ))
                     : uniqueCates.map((tab, index) => (
-                              <div key={index} onClick={_=> handleChangeTabs(tab.valueFilter) } data-filter={`.${tab.valueFilter}`} className={`filter-btn cursor-pointer relative  ${currentValue == tab.valueFilter ? 'text-primary ' : 'text-white'} duration-300 hover:text-primary  text20 max-md:text14 font-[500]  `}>
+                              <div key={index} onClick={_=> handleChangeTabs(tab.valueFilter) } data-filter={`.${tab.valueFilter}`} className={`filter-btn cursor-pointer relative  ${currentValue == tab.valueFilter ? 'text-primary ' : 'text-white'} duration-300 hover:text-primary  text20 max-md:text16 font-[500]  `}>
                                   {tab.name} <span className={` ${currentValue == tab.valueFilter ? 'scale-1.1' : 'scale-0'} absolute duration-500 transition-all w-[8px] h-[8px] rounded-[50%] font-[600] bg-primary  top-[-10px]  left-[50%] translate-x-[-50%]`}> </span>{' '}
                               </div>
                       ))}
@@ -141,7 +141,7 @@ export default function Filter({ setcategory , skeltonCount , showItem , service
                         ? Array.from({ length: skeltonCount }).map((_, index) => (
                               <div key={index} className='w-full '>
                                   <div className='relative cursor-pointer rounded-2xl max-md:p-2.5 p-2.5 flex flex-col justify-start items-center gap-1.25'>
-                                      <div className='max-w-[350px] w-full max-md:h-[200px] h-[300px] overflow-hidden'>
+                                      <div className='max-w-[350px] w-full max-md:h-[150px] h-[300px] overflow-hidden'>
                                           <div className='skeleton-box p-5 rounded-[20px] w-full h-full'></div>
                                       </div>
                                       <div className='skeleton-box h-8 w-full rounded-[20px] mt-4'></div>
@@ -149,12 +149,12 @@ export default function Filter({ setcategory , skeltonCount , showItem , service
                               </div>
                           ))
                         : services?.map((e, i) => (
-                              <div key={i} onClick={() => handleShowItem(e)} className={`max-w-[350px] w-full portfolio-item  filter-${e?.category?.id || e.service.id }  pointer-events-auto group relative cursor-pointer rounded-2xl max-md:p-2.5 p-2.5 transition duration-200 flex flex-col justify-start items-center gap-1.25`}>
+                              <div key={i} onClick={() => handleShowItem(e)} className={`max-w-[350px] !h-full w-full portfolio-item  filter-${e?.category?.id || e.service.id }  pointer-events-auto group relative cursor-pointer rounded-2xl !p-[5px] md:p-2.5  transition duration-200 flex flex-col justify-start items-center gap-1.25`}>
                                   <div className='absolute inset-0 bg-black clipathEffct'></div>
                                   <div className='w-full h-full max-h-[300px] overflow-hidden'>
-                                      <Image className='p-5 rounded-2xl w-full h-full object-contain bg-black' src={ e?.image || e?.images?.[0]?.image || ""} alt={e?.name_en || e?.title_en  || "alt"} width={350} height={350} />
+                                      <Image className='p-[5px] rounded-2xl w-full h-full object-contain bg-black' src={ e?.image || e?.images?.[0]?.image || ""} alt={e?.name_en || e?.title_en  || "alt"} width={350} height={350} />
                                   </div>
-                                  <div className='text-[30px] group-hover:text-primary duration-500 max-xl:text24 max-md:text20 text-center '> {e[`name_${locale}`]} </div>
+                                  <div className={`text24 !max-md:text14 ${e[`title_${locale}`] && "text20"} group-hover:text-primary duration-500 max-xl:text24 max-md:text20 text-center `}> {e[`name_${locale}`] || e[`title_${locale}`]} </div>
                               </div>
                           ))}
                 </div>

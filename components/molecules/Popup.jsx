@@ -7,6 +7,10 @@ export default function Popup({isOpen, setIsOpen, isAnimating, setIsAnimating, c
 
     const close = () => {
         setIsAnimating(true);
+        document.querySelector("nav").style.zIndex = "1000000"
+        const ele = document.querySelector(".swiper-pagination")
+        if(ele) ele.style.zIndex = "10"
+        document.querySelector(".whatsapp").style.zIndex = "100000000"
         gsap.to(popupRef.current, {
             opacity: 0,
             y: -50,
@@ -31,7 +35,7 @@ export default function Popup({isOpen, setIsOpen, isAnimating, setIsAnimating, c
         
         <div className=' popup fixed z-[100000000] flex items-center justify-center min-h-screen bg-gray-100'>
             {(isOpen || isAnimating) && (
-                <div className='fixed h-screen inset-0 z-50 flex items-center justify-center'>
+                <div className='fixed h-screen inset-0 z-[5000000000000000000] flex items-center justify-center'>
                     {/* Overlay */}
                     <div onClick={close} className='bg-black bg-opacity-50 backdrop-blur-sm w-full h-full inset-0 absolute'></div>
 

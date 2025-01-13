@@ -1,5 +1,5 @@
 'use client';
-import { useLayoutEffect, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Section1 from '@/components/pages/home/Section1';
 import Section2 from '@/components/pages/home/Section2';
 import Section3 from '@/components/pages/home/Section3';
@@ -67,48 +67,93 @@ export default function Page() {
         }
     }, [name]);
 
+    // const [IsLargeScreen, setIsLargeScreen] = useState();
+
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         const isMobile = window.innerWidth < 768; // `md` breakpoint: 768px
+    //         setIsLargeScreen(!isMobile);
+    //         console.log(IsLargeScreen);
+    //         if (swiperRef.current) {
+    //             const swiperInstance = swiperRef.current.swiper;
+    //             if (isMobile) {
+    //                 swiperInstance?.destroy(); // Destroy Swiper on small screens
+    //             } else {
+    //                 swiperInstance?.init(); // Reinitialize Swiper on larger screens
+    //             }
+    //         }
+    //     };
+
+    //     // Set the initial value
+    //     handleResize();
+
+    //     // Add event listener for resize
+    //     window.addEventListener('resize', handleResize);
+
+    //     // Clean up the event listener
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
+
     return (
         <div>
-            <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
-                <SwiperSlide className='h-screen'>
+            {/* {IsLargeScreen ? (
+                <> */}
+                    <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
+                        <SwiperSlide>
+                            <Section1 />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Section2 />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Section3 />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Section4 />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <TextCopy img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} />
+                        </SwiperSlide>
+                        <SwiperSlide className='bg-white !flex flex-col justify-center items-center '>
+                            <Footer id={'footer2'} />
+                        </SwiperSlide>
+                    </Swiper>
+                    <div className='swiper-pagination'></div>
+                {/* </>
+            ) : (
+                <>
                     <Section1 />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <Section2 />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <Section3 />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <Section4 />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} />
-                </SwiperSlide>
-                <SwiperSlide className='h-screen'>
                     <TextCopy img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} />
-                </SwiperSlide>
-                <SwiperSlide className='bg-white !flex flex-col justify-center items-center '>
                     <Footer id={'footer2'} />
-                </SwiperSlide>
-            </Swiper>
-
-            <div className='swiper-pagination'></div>
+                </>
+            )} */}
         </div>
     );
 }

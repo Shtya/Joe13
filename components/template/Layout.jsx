@@ -38,7 +38,7 @@ export default function Layout({ children }) {
             <div className={`relative ${direction}  duration-300 transition-all `}> {children} </div>
             {!hideFooter && <Footer id='footer' cn={`relative ${direction} duration-300 transition-all`} />}
 
-            {isclick && <div onClick={handleClick} className='bg-black bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
+            {isclick && <div onClick={handleClick} className='bg-black z-[1000] fixed bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
             <Toaster position='bottom-center' duration={9000} />
         </main>
     );

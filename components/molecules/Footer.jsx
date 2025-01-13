@@ -87,21 +87,22 @@ const Footer = ({cn , id}) => {
 
                     <div className="col">
                         <div className={style.head}> {t("contact_us")} </div>
-                        <div className={style.link}> {t("head_office")} </div>
-                        <div className={style.link}> {t("branch_office_riyadh0")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("head_office")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_riyadh0")} </div>
                         <hr className="my-[10px] " />
-                        <div className={style.link}> {t("branch_office_jeddah")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_jeddah")} </div>
                         <hr className="my-[10px] " />
-                        <div style={{direction : "ltr"}} className={`${style.link} rtl:text-right `}> {process.env.NEXT_PUBLIC_PHONE} </div>
+                        <div style={{direction : "ltr"}} className={`${style.link} hover:!text-black cursor-auto  rtl:text-right `}> {process.env.NEXT_PUBLIC_PHONE} </div>
                         <hr className="my-[10px] " />
                     </div>
 
                     <div className="col">
                         <div className={style.head}> {t("branch_office")} </div>
-                        <div className={style.link}> {t("branch_office_egypt")} </div>
-                        <div className={style.link}> {t("branch_office_riyadh")} </div>
-                        <div className={style.link}> {t("branch_office_makkah")} </div>
-                        <div className={style.link}> {t("branch_office_dammam")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_jeddah")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_egypt")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_riyadh")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_makkah")} </div>
+                        <div className={`${style.link} hover:!text-black cursor-auto `}> {t("branch_office_dammam")} </div>
                     </div>
                 </div>
             </footer>

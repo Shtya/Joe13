@@ -39,7 +39,7 @@ export default function BoardMembers() {
         <EffectFixed cnParent={""} overlay={false} image={'/assets/aboutus/1.png'} z={'z-[-100]'}>
             {<TextSlide cnParent={`  ${isExpanded ? '  text-primary  ' : ''}  mb-[60px] max-md:mb-[30px]  `} cn={` ${!isExpanded ? '' : '!text-primary  '} w-full text40 text-white `} text={t('boardMembersTitle')} />}
 
-            <div className=' founders w-full flex flex-col gap-[50px] justify-start items-start px-[20px] '>
+            <div className=' founders w-full flex flex-col gap-[50px] justify-start items-start md:px-[20px] '>
                 {t
                     .raw('boardMembers')
                     .slice(0, isExpanded ? 20 : 4)
@@ -50,8 +50,8 @@ export default function BoardMembers() {
                             </div>
                             <div className=' flex flex-col gap-[3px] items-start '>
                                 <div className="flex max-sm:flex-col max-sm:gap-[0px] items-center gap-[10px]  max-md:mx-auto " >
-                                    <TextSlide cnParent={'text20  '} text={e?.name} />
-                                    <TextSlide cnParent={'text16 font-[400] text-primary  '} text={`( ${e?.position} )`} />
+                                    <TextSlide cnParent={'text20 text-center  '} text={e?.name} />
+                                    <TextSlide cnParent={'text16 font-[400]  text-primary  '}  text={`( ${e?.position} )`} />
                                 </div>
                                 <TextSlide cnParent={'text14 max-md:text-center max-w-[700px] opacity-50  w-full  '} text={e?.description} />
                             </div>

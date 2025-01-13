@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
 	
     return (
         <div className='w-screen'>
-            <div className='container !px-[40px] '>
+            <div className='container  md:!px-[40px] '>
                 <TextSlide cnParent={`w-fit ltr:mr-auto rtl:ml-auto`} cn={` text-left w-full text40 text-primary font-[600] `} text={t('whyChooseTitle')} />
 
                 <ul className={` mx-auto !px-[10px] md:!px-[40px] list-decimal flex flex-col gap-[10px] mt-[30px] `}>

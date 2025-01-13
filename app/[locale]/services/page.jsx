@@ -23,7 +23,7 @@ export default function page() {
                     <div data-aos={category == null && "fade-down"} className={` text-center  w-full text20  text-balance`} > {t("projectsDescription")} </div>
                 </>
             }
-            <Filter skeltonCount={3} showItem={true} services={services}  loading={loading}  setcategory={setcategory} />
+            <Filter skeltonCount={6} showItem={true} services={services}  loading={loading}  setcategory={setcategory} />
         </EffectFixed>
     );
 }
