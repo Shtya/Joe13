@@ -28,7 +28,7 @@ export default function Layout({ children }) {
     const pathname = usePathname();
 	console.log(pathname)
 
-    const hideFooter = pathname === '/about-us' || pathname === '/home';
+    const hideFooter = pathname === '/about-us' || pathname === '/';
 
     return (
         <main className='overflow-x-hidden'>

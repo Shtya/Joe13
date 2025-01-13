@@ -30,6 +30,8 @@ export default function Page() {
     const data11 = t.raw('data11');
 
     const swiperRef = useRef(null);
+    const [isLastSlide, setIsLastSlide] = useState(false);
+
     const config = {
         modules: [EffectCreative, Pagination, Navigation, Autoplay, Mousewheel],
         effect: 'creative',
@@ -50,6 +52,11 @@ export default function Page() {
             type: 'bullets',
             clickable: true,
         },
+        onSlideChange: (swiper) => {
+
+            const isLast = swiper.activeIndex === swiper.slides.length - 1;
+            setIsLastSlide(isLast);
+        }
     };
 
     const searchParams = useSearchParams();
@@ -67,37 +74,16 @@ export default function Page() {
         }
     }, [name]);
 
-    // const [IsLargeScreen, setIsLargeScreen] = useState();
-
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         const isMobile = window.innerWidth < 768; // `md` breakpoint: 768px
-    //         setIsLargeScreen(!isMobile);
-    //         console.log(IsLargeScreen);
-    //         if (swiperRef.current) {
-    //             const swiperInstance = swiperRef.current.swiper;
-    //             if (isMobile) {
-    //                 swiperInstance?.destroy(); // Destroy Swiper on small screens
-    //             } else {
-    //                 swiperInstance?.init(); // Reinitialize Swiper on larger screens
-    //             }
-    //         }
-    //     };
-
-    //     // Set the initial value
-    //     handleResize();
-
-    //     // Add event listener for resize
-    //     window.addEventListener('resize', handleResize);
-
-    //     // Clean up the event listener
-    //     return () => window.removeEventListener('resize', handleResize);
-    // }, []);
+    useEffect(() => {
+        if (isLastSlide) {
+            console.log(isLastSlide)
+            const ele = document.querySelector(".swiper-pagination-bullet")
+            if(ele) ele.style.background = "black" 
+        }
+    }, [isLastSlide , "ds"]);
 
     return (
         <div>
-            {/* {IsLargeScreen ? (
-                <> */}
                     <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
                         <SwiperSlide>
                             <Section1 />
@@ -137,23 +123,7 @@ export default function Page() {
                         </SwiperSlide>
                     </Swiper>
                     <div className='swiper-pagination'></div>
-                {/* </>
-            ) : (
-                <>
-                    <Section1 />
-                    <Section2 />
-                    <Section3 />
-                    <Section4 />
-                    <TextCopy img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} />
-                    <TextCopy img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} />
-                    <TextCopy img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} />
-                    <TextCopy img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} />
-                    <TextCopy img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} />
-                    <TextCopy img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} />
-                    <TextCopy img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} />
-                    <Footer id={'footer2'} />
-                </>
-            )} */}
+
         </div>
     );
 }
