@@ -60,10 +60,10 @@ const PreLoading = () => {
 
   return (
     <div className={` ${finish ? "two" : "one"} duration-500 w-screen z-[1000000000000] h-screen fixed inset-0 bg-black`}>
-      <ParticleGround />
-      <div className="overlay fixed inset-0 bg-[#000] z-[10] bg-opacity-50"></div>
+      <div className="w-[100vw] h-[100vh] fixed left-0 top-0 z-[-1]  " > <ParticleGround  /> </div>
+      <div className="overlay fixed inset-0 bg-[#000] w-screen h-screen z-[10] bg-opacity-50"></div>
 
-      <div className="loading-screen w-screen h-screen flex items-center justify-center">
+      <div className="loading-screen relative z-[100] w-screen h-screen flex items-center justify-center">
         <div className="z-[1000000000] loading-animation flex items-center flex-col justify-center">
           <img className="w-[300px]" src="/assets/imgs/logo.png" alt="Logo" />
           
