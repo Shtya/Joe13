@@ -49,7 +49,7 @@ export default function Section2() {
             <div className="text-[40px] max-xl:text24 text-center text-primary font-[700]">
               {/* Only start CountUp when the section is in view */}
               {inView && (
-                <div className="flex gap-[2px] " >
+                <div className="flex gap-[2px] " style={{direction : "ltr"}}  >
                   + <CountUp end={e.value} duration={4} useEasing={true} delay={.1} />
                   <span> {e?.unit} </span>
                 </div>
