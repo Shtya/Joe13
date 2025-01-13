@@ -227,3 +227,41 @@ html {
   .swiper-slide{
     overflow-y: auto !important ;
   }
+
+
+
+  /*  preload */
+
+ 
+  .one {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+    .two {
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+  
+.loading-bar{
+    width: 170px;
+    height: 4px;
+    background: #cfcfcf;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .loading-bar::before{
+    content: '';
+    width: 68px;
+    height: 4px;
+    background: #2B7BC2;
+    position: absolute;
+    left: -34px;
+    animation: bluebar 1.5s infinite ease;
+  }
+  
+  @keyframes bluebar{
+    50%{
+      left: 96px;
+    }
+  }

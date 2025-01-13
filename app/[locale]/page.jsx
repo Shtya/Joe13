@@ -5,6 +5,7 @@ import Section2 from '@/components/pages/home/Section2';
 import Section3 from '@/components/pages/home/Section3';
 import Section4 from '@/components/pages/home/Section4';
 import TextCopy from '@/components/pages/home/TextCopy';
+import PreLoading from '@/components/atoms/PreLoading';
 // import { hookAnimation } from '@/hooks/hookAnimation';
 import { useTranslations } from 'next-intl';
 
@@ -97,7 +98,7 @@ export default function Page() {
     }, [isLastSlide , "dds"]);
 
     return (
-        <div>
+        <div className="bg-black" >
                     <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
                         <SwiperSlide> <Section1 /> </SwiperSlide>
                         <SwiperSlide> <Section2 /> </SwiperSlide>
@@ -114,6 +115,7 @@ export default function Page() {
                     </Swiper>
                     <div className='swiper-pagination'></div>
 
+                    <PreLoading />
         </div>
     );
 }
