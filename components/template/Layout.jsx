@@ -15,7 +15,6 @@ export default function Layout({ children }) {
         setisclick(!isclick);
     };
 
-    const [start , setstart ] = useState(false);
 
     useEffect(() => {
         AOS.init({
@@ -25,9 +24,6 @@ export default function Layout({ children }) {
             once: true,
         });
 
-        setTimeout(() => {
-            setstart(true)
-        }, 4500);
     }, []);
 
     const direction = isclick ? ' ltr:left-[250px] rtl:right-[250px] ' : 'ltr:left-0 rtl:right-0';
@@ -37,24 +33,14 @@ export default function Layout({ children }) {
 
     return (
         <main className='overflow-x-hidden'>
-            {
-                start ? 
-                <>
-                <Navbar isclick={isclick} handleClick={handleClick} />
-                <WhatsApp />
-    
-                <div className={`relative ${direction}  duration-300 transition-all `}> {children} </div>
-                {!hideFooter && <Footer id='footer' cn={`relative ${direction} duration-300 transition-all`} />}
-    
-                {isclick && <div onClick={handleClick} className='bg-black z-[1000] fixed bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
-                <Toaster position='bottom-center' duration={9000} />
-                
-                </>
+            <Navbar isclick={isclick} handleClick={handleClick} />
+            <WhatsApp />
 
-                : <PreLoading />
-            }
+            <div className={`relative ${direction}  duration-300 transition-all `}> {children} </div>
+            {!hideFooter && <Footer id='footer' cn={`relative ${direction} duration-300 transition-all`} />}
 
-            
+            {isclick && <div onClick={handleClick} className='bg-black z-[1000] fixed bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
+            <Toaster position='bottom-center' duration={9000} />
         </main>
     );
 }

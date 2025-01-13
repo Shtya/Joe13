@@ -97,25 +97,33 @@ export default function Page() {
 
     }, [isLastSlide , "dds"]);
 
-    return (
-        <div className="bg-black" >
-                    <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
-                        <SwiperSlide> <Section1 /> </SwiperSlide>
-                        <SwiperSlide> <Section2 /> </SwiperSlide>
-                        <SwiperSlide> <Section3 /> </SwiperSlide>
-                        <SwiperSlide> <Section4 /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} /> </SwiperSlide>
-                        <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} /> </SwiperSlide>
-                        <SwiperSlide className='bg-white !flex flex-col justify-center items-center '> <Footer id={'footer2'} /> </SwiperSlide>
-                    </Swiper>
-                    <div className='swiper-pagination'></div>
+    const [finish , setfinish ] = useState(false)
 
-                    {/* <PreLoading /> */}
-        </div>
+    return (
+        
+            finish 
+            ? <div className="bg-black" >
+            <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
+                <SwiperSlide> <Section1 /> </SwiperSlide>
+                <SwiperSlide> <Section2 /> </SwiperSlide>
+                <SwiperSlide> <Section3 /> </SwiperSlide>
+                <SwiperSlide> <Section4 /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} /> </SwiperSlide>
+                <SwiperSlide className='bg-white !flex flex-col justify-center items-center '> <Footer id={'footer2'} /> </SwiperSlide>
+            </Swiper>
+            <div className='swiper-pagination'></div>
+
+            </div>
+            
+            
+            :<PreLoading finish={finish} setfinish={setfinish} />
+        
+        
     );
 }

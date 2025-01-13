@@ -35,10 +35,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import ParticleGround from 'particleground.ts';
 
-const PreLoading = () => {
+const PreLoading = ({finish , setfinish}) => {
   const [loadingProgress, setLoadingProgress] = useState(0); // State to track loading progress
   const loadingBarRef = useRef(null); // Reference to the loading bar
-  const [finish , setfinish ] = useState(false)
 
   useEffect(() => {
     // GSAP animation to animate the loading bar from 0% to 100%
