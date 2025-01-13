@@ -7,7 +7,7 @@ import Footer from '../molecules/Footer';
 import { Toaster } from 'react-hot-toast';
 import WhatsApp from '../WhatsApp';
 import { usePathname } from '@/navigation';
-import PreLoading from '../atoms/preLoading';
+import PreLoading from '@/components/atoms/preLoading';
 
 export default function Layout({ children }) {
     const [isclick, setisclick] = useState(false);
