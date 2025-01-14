@@ -6,13 +6,11 @@ import { UploadCloudIcon } from 'lucide-react';
 export default function UploadFile({ place, dataAos, error, watch , trigger , cn, label, setValue, icon, KEY, cnLabel }) {
     const t = useTranslations();
     const [file, setFile] = useState(null);
-    const [preview, setPreview] = useState(null);
 
     const handleImage = e => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
             setFile(selectedFile);
-			console.log(selectedFile)
             setValue(KEY, selectedFile);
         }
     };
@@ -20,6 +18,10 @@ export default function UploadFile({ place, dataAos, error, watch , trigger , cn
 	const watchKey = watch?.(KEY)
 	useEffect(()=>{
 		if(watchKey)  trigger?.(KEY) 
+        if(watchKey == undefined){
+            setFile(null)
+            setValue(KEY , null);
+        }
 		},[watchKey])
 
 

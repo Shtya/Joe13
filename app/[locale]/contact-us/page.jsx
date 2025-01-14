@@ -2,6 +2,7 @@
 import Button from '@/components/atoms/Button';
 import Input from '@/components/atoms/input/Input';
 import TextArea from '@/components/atoms/input/TextArea'; 
+import TextLoading from '@/components/pages/home/TextLoading';
 import EffectFixed from '@/helpers/EffectFixed';
 import TextSlide from '@/helpers/TextSlide';
 import { hookContactUs } from '@/hooks/hookContactUs';
@@ -15,6 +16,9 @@ export default function page() {
 
     return (
         <EffectFixed image={'/assets/imgs/contactus.png'}>
+                {/* <TextLoading cnSkelton="w-[200px] h-[40px] " loading={loading} cn={`${!isExpanded ? 'text-center' : '!text-primary rtl:text-right ltr:text-left'} w-full text40 text-white`} name={title} />
+                <TextLoading cnSkelton="w-full max-w-[600px] h-[30px]"  loading={loading} cn={`${!isExpanded ? 'text-center' : 'text18 rtl:text-right ltr:text-left'} w-full text22 text-white `} name={description} /> */}
+
                 <TextSlide cnParent={`w-fit ltr:mr-auto max-sm:mx-auto rtl:ml-auto  `} cn={` text-left w-full text40 font-[600] `} text={t('contactUsTitle')} />
                 <TextSlide cnParent={`w-fit ltr:mr-auto max-sm:mx-auto rtl:ml-auto mt-[-10px] mb-[50px]  `} cn={` text-left max-sm:text-center w-full text24 font-[400] `} text={t('stayConnected')} />
 

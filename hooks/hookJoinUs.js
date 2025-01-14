@@ -28,7 +28,7 @@ const submit = handleSubmit(async (data) => {
 
   const toastId = toast.loading(t("submitting"));
   try {
-    const res = await api.post("contact/create", handleData);
+    api.post("contact/create", handleData);
     toast.success(t("contactSuccess"), { id: toastId });
     reset();
   } 

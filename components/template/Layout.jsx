@@ -7,6 +7,7 @@ import Footer from '../molecules/Footer';
 import { Toaster } from 'react-hot-toast';
 import WhatsApp from '../WhatsApp';
 import { usePathname } from '@/navigation';
+import PreLoading from '../atoms/PreLoading';
 
 
 export default function Layout({ children }) {
@@ -31,7 +32,10 @@ export default function Layout({ children }) {
     const pathname = usePathname();
     const hideFooter = pathname === '/about-us' || pathname === '/';
 
+    const [finish , setfinish ] = useState(false)
+
     return (
+        finish ?
         <main className='overflow-x-hidden'>
             <Navbar isclick={isclick} handleClick={handleClick} />
             <WhatsApp />
@@ -42,5 +46,7 @@ export default function Layout({ children }) {
             {isclick && <div onClick={handleClick} className='bg-black z-[1000] fixed bg-opacity-70 w-screen h-screen fixed top-0  '></div>}
             <Toaster position='bottom-center' duration={9000} />
         </main>
+
+        : <PreLoading finish={finish} setfinish={setfinish} />
     );
 }

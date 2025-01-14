@@ -9,8 +9,8 @@ export default function page() {
     const t = useTranslations('JoinUs');
     
     return (
-        <EffectFixed image={'/assets/imgs/joinus.png'}>
-            <Text hidden={true} more={t("viewMore")} less={t("viewLess")} overlay={true} title={t('joinUs')} description={t('aboutJoe13th')} component={<WhyChooseUs />} />
+        <EffectFixed image={'/assets/imgs/joinus.png'}  >
+            <Text hidden={true} img={'/assets/imgs/joinus.png'} more={t("viewMore")} less={t("viewLess")} overlay={true} title={t('joinUs')} description={t('aboutJoe13th')} component={<WhyChooseUs />} />
         </EffectFixed>
     );
 }

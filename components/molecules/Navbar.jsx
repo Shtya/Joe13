@@ -28,7 +28,7 @@ export default function Navbar({ isclick, handleClick }) {
     }, []);
 
     const links = [
-        { value: '/', name: t('home') },
+        { value: '/?section=home', name: t('home') },
         {
             value: '',
             name: t('business-units'),
@@ -115,7 +115,7 @@ export default function Navbar({ isclick, handleClick }) {
                         <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon className={isFooterInView ? "text-black" : "text-white"} />  </div>
                         <SwitchLang cn={`${isFooterInView ? "text-black" : "text-white"}`} />
                     </div>
-                    <Link href="/" className="outline-none" > <Image className="w-[160px] max-md:w-[100px] " src={`/assets/svg/${isFooterInView ? 'logo' : 'logo-white'}.svg`} width={160} height={60} alt="" /> </Link>
+                    <Link href="/?section=home" className="outline-none" > <Image className="w-[160px] max-md:w-[100px] " src={`/assets/svg/${isFooterInView ? 'logo' : 'logo-white'}.svg`} width={160} height={60} alt="" /> </Link>
                 </div>
 			</div>
 

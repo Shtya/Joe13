@@ -12,16 +12,14 @@ const PreLoading = ({finish , setfinish}) => {
     // GSAP animation to animate the loading bar from 0% to 100%
     gsap.to(loadingBarRef.current, {
       width: '100%', // Animate the width to 100%
-      duration: 4, // Duration of 4000ms (4 seconds)
+      duration: 2, // Duration of 4000ms (4 seconds)
       ease: 'power2.out', // Smooth easing
       onUpdate: () => {
-        // Update the loading progress state based on the animation progress
         const progress = Math.round(gsap.getProperty(loadingBarRef.current, 'width') );
         setLoadingProgress(progress);
       },
       onComplete: () => {
         setfinish(true)
-		console.log("finsh")
       },
     });
   }, []);
@@ -39,7 +37,7 @@ const PreLoading = ({finish , setfinish}) => {
             <div
               ref={loadingBarRef}
               className="h-full bg-primary loading-progress"
-              style={{ width: `${loadingProgress}%` }} 
+              style={{ fontFamily : "Kalam"  , width: `${loadingProgress}%` }} 
             ></div>
           </div>
           {/* Display loading progress as text */}

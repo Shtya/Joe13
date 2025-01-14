@@ -19,6 +19,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/mousewheel';
 import Footer from '@/components/molecules/Footer';
 import { useSearchParams } from 'next/navigation';
+import VerticalSlider from '@/helpers/VerticalSlider';
 
 export default function Page() {
     const t = useTranslations();
@@ -33,6 +34,14 @@ export default function Page() {
     const swiperRef = useRef(null);
     const [isLastSlide, setIsLastSlide] = useState(false);
     const [closeTab , setcloseTab] = useState(true);
+
+    const {handleScrollInside} = VerticalSlider()
+    useEffect(() => {
+        if (swiperRef.current && swiperRef.current.swiper) {
+            const swiperInstance = swiperRef.current.swiper;
+            handleScrollInside(swiperInstance);
+        }
+    }, []);
 
     const config = {
         modules: [EffectCreative, Pagination, Navigation, Autoplay, Mousewheel],
@@ -63,7 +72,12 @@ export default function Page() {
             if(ele) ele.style.zIndex = "10"
             document.querySelector(".whatsapp").style.zIndex = "100000000"
             setcloseTab(true)
-        }
+        },
+        on: {
+            init: (swiper) => {
+                handleScrollInside(swiper);
+            },
+        },
     };
 
     const searchParams = useSearchParams();
@@ -78,6 +92,9 @@ export default function Page() {
     useEffect(() => {
         if (name === 'partners') {
             goToSlide(2);
+        }
+        if (name === 'home') {
+            goToSlide(0);
         }
     }, [name]);
 
@@ -97,12 +114,9 @@ export default function Page() {
 
     }, [isLastSlide ]);
 
-    const [finish , setfinish ] = useState(false)
-
     return (
         
-            finish 
-            ? <div className="bg-black" >
+            <div className="bg-black" >
             <Swiper {...config} ref={swiperRef} className='mySwiper h-screen'>
                 <SwiperSlide> <Section1 /> </SwiperSlide>
                 <SwiperSlide> <Section2 /> </SwiperSlide>
@@ -115,15 +129,11 @@ export default function Page() {
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section11.png`} title={t('Our Products')} description={t('section11')} list={data11} /> </SwiperSlide>
-                <SwiperSlide className='bg-white !flex flex-col justify-center items-center '> <Footer id={'footer2'} /> </SwiperSlide>
+                <SwiperSlide className='footer-slide overflow-auto py-[100px] bg-white !flex flex-col justify-center items-center '> <Footer id={'footer2'} /> </SwiperSlide>
             </Swiper>
             <div className='swiper-pagination'></div>
 
             </div>
-            
-            
-            :<PreLoading finish={finish} setfinish={setfinish} />
-        
-        
+
     );
 }

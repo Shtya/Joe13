@@ -261,7 +261,7 @@ export default {
             li4: ['Branch Office', 'Egypt', 'Riyadh', 'Makkah', 'Dammam'],
         },
         footer2: {
-            li1: ' Designed & Developed by Joe 13 Team all rights received © Joe 13  ',
+            li1: ' Designed & Developed by Joe13 Team all rights received © Joe13  ',
         },
     },
 
@@ -305,7 +305,7 @@ export default {
             },
             {
                 h2: 'Artificial Intelligence Solutions',
-                h3: 'Due to recent technological advancements and the introduction of artificial intelligence in all fields, it has become necessary to develop applications that carry out the complex tasks that previously used to require human input. JOE 13 uses cutting-edge artificial intelligence (AI) and machine learning technology to solve business problems, lower operating costs, and develop the best infrastructure strategy. This is accomplished by gathering and analyzing data, extracting pertinent information, and creating a prediction model to eliminate errors. Through artificial intelligence, we are able to transform artificial eyes (cameras) into smart devices willing to take the right decision and this is called computer vision.',
+                h3: 'Due to recent technological advancements and the introduction of artificial intelligence in all fields, it has become necessary to develop applications that carry out the complex tasks that previously used to require human input. Joe13 uses cutting-edge artificial intelligence (AI) and machine learning technology to solve business problems, lower operating costs, and develop the best infrastructure strategy. This is accomplished by gathering and analyzing data, extracting pertinent information, and creating a prediction model to eliminate errors. Through artificial intelligence, we are able to transform artificial eyes (cameras) into smart devices willing to take the right decision and this is called computer vision.',
             },
             {
                 h2: 'Custom System',

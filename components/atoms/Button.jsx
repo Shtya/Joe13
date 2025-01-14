@@ -29,9 +29,9 @@ export default function Button({ cn, loading , disabled , name, onClick, borderA
 function Loading() {
 	const t = useTranslations()
     return (
-		<div  className="flex items-center justify-center gap-[10px] ">
+		<div  className="flex items-center justify-center gap-[10px]  ">
 			<span className="text-primary text18 " > {t("loading")} </span>
-			<div class="w-6 h-6 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent shadow-md">   </div>
+			<div className="w-6 h-6 flex-none rounded-full animate-spin border-4 border-solid border-primary border-t-transparent shadow-md">   </div>
 		</div>
     );
 }

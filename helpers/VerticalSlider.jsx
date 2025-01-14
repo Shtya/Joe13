@@ -1,6 +1,3 @@
-import { useEffect , useState } from 'react'
-import toast from 'react-hot-toast'
-
 export default function VerticalSlider() {
 
 	// const [countTop , setcountTop] = useState(0)
@@ -8,7 +5,6 @@ export default function VerticalSlider() {
 	let play = true
 	let countTop = 0
 	let countBottom = 0
-	const [currentHeight , setcurrentHeight] = useState()
 
 
 	const handleScrollInside = (swiper) => {
@@ -17,37 +13,14 @@ export default function VerticalSlider() {
 			const activeSlide = document.querySelector('.swiper-slide-active');
 			const slideHeight = activeSlide.clientHeight;
 			const slideInnerHeight = activeSlide.scrollHeight;
-			let lastScrollY = window.scrollY;
 			
-
-			
-			if (activeSlide.classList.contains('footer-slide')) {
-				play = false
-			}
+			if (activeSlide.classList.contains('footer-slide')) { play = false }
 			else { play = true; }
-	
-			
-	
+
 			if (slideInnerHeight > slideHeight) {
 
-				const handleWindowScroll = () => {
-					console.log("fire here")
-			
-					const currentScrollY = window.scrollY; // Current scroll position
-					const scrollDelta = currentScrollY - lastScrollY; // Difference in scroll position					const slowScrollRatio = 0.01; // 1px / 100px
-					activeSlide.scrollTop += scrollDelta * slowScrollRatio;
-			
-					lastScrollY = currentScrollY;
-				};
-			
-				// Add window scroll event listener
-				window.addEventListener('scroll', handleWindowScroll);
-
-
-	
 				swiper.mousewheel.disable();
 				swiper.allowTouchMove = false;
-				setcurrentHeight(slideHeight)
 	
 				const handleInnerScroll = (event) => {
 					const scrollTop = Math.ceil(activeSlide.scrollTop);
@@ -64,9 +37,9 @@ export default function VerticalSlider() {
 						}
 					}
 					
-					if (scrollTop >= (scrollDifference - 20 ) && play != false ) {
-						activeSlide.scrollBy({ top: -50, left: 0, behavior: 'smooth' });
+					if (scrollTop >= (scrollDifference - 5 ) && play != false ) {
 						countBottom +=1
+						activeSlide.scrollTop = scrollDifference - 50
 	
 						if(countBottom >= 2){
 						activeSlide.removeEventListener('scroll', handleInnerScroll);

@@ -6,12 +6,12 @@ import React, { useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { useTranslations } from 'next-intl';
 
-export default function BoardMembers() {
+export default function BoardMembers({setshowall}) {
     const t = useTranslations('aboutUs');
     const tBtn = useTranslations('');
 
     const listRef = useRef(null); // Reference to the list
-    const [isExpanded, setIsExpanded] = useState(false); // State to track if the list is expanded
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const handleReadMore = () => {
         if (!isExpanded) {
@@ -32,6 +32,7 @@ export default function BoardMembers() {
             });
         }
         setIsExpanded(!isExpanded);
+        setshowall(!isExpanded);
     };
 
     
