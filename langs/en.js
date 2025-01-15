@@ -40,9 +40,9 @@ export default {
     data8 : ['Direct Sales', 'current partners: (Virgin - Red Bull mobile -Zain - Mobily)', 'Modern trade - current clients:(Virgin, Red Bull, Zain)', 'Haj & Umrah sales - with (Virgin, Mobily, Red Bull, Non-telecom sales)', 'B2B Sales - current partners: (Zain)', 'Non-telecom sales', 'B2C Sales - (Flexible Card)', 'B2B Sales - partners: (Motorola - Arab computer - In Home)'],
 
     data9 : [ 
-        { title: 'HR Outsourcing service :', desc: 'Sponsorship transfer, Visa Issuing, Administration, Management, Payroll, Training, Hiring, Recruiting, Operate benefit plans, and Saudi Gosi registrations' },
-        { title: 'Governmental affairs :', desc: 'Iqama (resident permit) processing, Processing of all types of Visas, Saudi Mandoob (representative) and personnel, Services- handling of legal matters, Passport office services, GOSI-related services, Medical insurance services' },
-        { title: 'HR Management :', desc: 'Temporary work visa, Permits, Employee transfer service, Nationalisation plan' },
+        { title: 'HR Outsourcing service ', desc: 'Sponsorship transfer, Visa Issuing, Administration, Management, Payroll, Training, Hiring, Recruiting, Operate benefit plans, and Saudi Gosi registrations' },
+        { title: 'Governmental affairs ', desc: 'Iqama (resident permit) processing, Processing of all types of Visas, Saudi Mandoob (representative) and personnel, Services- handling of legal matters, Passport office services, GOSI-related services, Medical insurance services' },
+        { title: 'HR Management ', desc: 'Temporary work visa, Permits, Employee transfer service, Nationalisation plan' },
     ],
 
     data10 : [ 

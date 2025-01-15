@@ -127,6 +127,24 @@ html {
     scroll-behavior: smooth;
 }
 
+.full-square {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+}
+.half-square {
+    clip-path: polygon(0 45%, 54% 47%, 56% 98%, 48% 101%);
+}
+
+.dropdown-animation {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+.dropdown-animation.open {
+    max-height: 1000px; /* Adjust this value based on your content */
+  }
+
 ::-webkit-scrollbar-track {
     background: #fff;
 }

@@ -8,24 +8,7 @@ import SwitchLang from '../atoms/SwitchLang';
 
 export default function Navbar({ isclick, handleClick }) {
     const t = useTranslations('Navbar');
-    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname()
-    const [ishome , setishome] = useState();
-
-    useEffect(()=>{
-        if(pathname == "/") setishome(true)
-        else setishome(false)
-    },[pathname])
-
-    // Monitor scroll position
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     const links = [
         { value: '/?section=home', name: t('home') },
@@ -79,7 +62,6 @@ export default function Navbar({ isclick, handleClick }) {
 
 
     const [isFooterInView, setIsFooterInView] = useState(false);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -107,10 +89,33 @@ export default function Navbar({ isclick, handleClick }) {
     };
   }, [pathname]);
 
+
+  const [currentDrop , setcurrentDrop] = useState(0)
+  const handleDropDown = (i) => {
+
+    if(window.innerWidth <= 640){
+        if(currentDrop == i) setcurrentDrop(null)
+        else setcurrentDrop(i)
+    }
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+        if(window.innerWidth > 640){
+            setcurrentDrop(null)
+        }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [])
+
     return (
         <nav className={` text-white z-[100000] relative `}>
-			<div  className={`${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '} ${ishome && "bg-transparent"} ${isScrolled ? 'bg-[#111] bg-opacity-90 ' : 'bg-transparent'}  py-[20px] fixed !duration-300 !transition-all w-full `} >
-				<div className={` ${isclick ? "": "container"} flex items-center justify-between gap-[10px]`}>
+			<div  className={`${isFooterInView ? "bg-white" : "bg-black bg-opacity-30 "} ${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '}  py-[20px] fixed !duration-300 !transition-all w-full `} >
+				<div className={` ${isclick ? "": "container"}  flex items-center justify-between gap-[10px]`}>
                     <div className="flex items-center gap-[10px]  " >
                         <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon className={isFooterInView ? "text-black" : "text-white"} />  </div>
                         <SwitchLang cn={`${isFooterInView ? "text-black" : "text-white"}`} />
@@ -125,19 +130,17 @@ export default function Navbar({ isclick, handleClick }) {
                 </div>
 
                 {links.map((link, index) => (
-                    <li key={index} className=' group relative  '>
+                    <li key={index} className=' group relative  ' onClick={()=> handleDropDown(link?.list?.[0].name) } >
                         <Link onClick={() => handleClose(link)} href={link.value} className={` ${style.a} text18 flex justify-between items-center  `}>
                             {link.name}
-                            {link.list && <ChevronDown className={` opacity-80 `} />}
+                            {link.list && <Plus  className={`${link?.list?.[0].name == currentDrop ? "full-square rotate-[0deg] " : "half-square rotate-[135deg]" } duration-300 opacity-80 `} /> }
                         </Link>
 
-                        <ul className='bg-white z-[10000] ltr:sm:border-l-[4px] ltr:border-l-black rtl:sm:border-r-[4px] rtl:border-r-black   shadow-md top-0 hidden group-hover:block sm:absolute rtl:sm:right-[250px] ltr:sm:left-[250px]  sm:w-[200px] '>
+                        <ul  className={`bg-white z-[10000] ${link?.list?.[0].name == currentDrop && "max-sm:!block open " } max-sm:dropdown-animation  sm:group-hover:block hidden  max-sm:hidden ltr:sm:border-l-[4px] ltr:border-l-black rtl:sm:border-r-[4px] rtl:border-r-black   shadow-md top-0  sm:absolute rtl:sm:right-[250px] ltr:sm:left-[250px]  sm:w-[200px]`}>
                             {link.list &&
                                 link.list.map((e, i) => (
                                     <li key={i} className='text14 hover:text-white hover:bg-primary relative hover:after:h-[60%] after:top-[50%] after:translate-y-[-50%] after:absolute after:h-0 after:w-[3px] after:bg-white ltr:after:right-[5px] rtl:after:left-[5px] after:duration-300  '>
-                                        <Link onClick={() => handleClose(e)} className={style.a} href={e.value}>
-                                            {e.name}
-                                        </Link>
+                                        <Link onClick={() => handleClose(e)} className={style.a} href={e.value}> {e.name} </Link>
                                     </li>
                                 ))}
                         </ul>
