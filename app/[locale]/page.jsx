@@ -49,7 +49,7 @@ export default function Page() {
         creativeEffect: {
             prev: {
                 shadow: true,
-                translate: [0, '-100%', -400],
+                translate: [0, '-100%', -100],
             },
             next: {
                 translate: [0, '100%', 0],
@@ -124,7 +124,7 @@ export default function Page() {
                 <SwiperSlide> <Section4 /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section5.png`} title={t('Marketing')} description={t('section5')} list={data5} grid={2} /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section6.png`} title={t('Software & AI')} description={t('section6')} list={data6} /> </SwiperSlide>
-                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section7.png`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} /> </SwiperSlide>
+                <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/mosandah.jpg`} title={t('Masanadah')} description={t('section7')} list={data7} icon={'/assets/imgs/logo2.png'} /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section8.png`} title={t('Telecoms')} description={t('section8')} list={data8} /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section9.png`} title={t('Manpower & HR Solutions')} description={t('section9')} data={data9} /> </SwiperSlide>
                 <SwiperSlide> <TextCopy closeTab={closeTab} setcloseTab={setcloseTab} img={`/assets/imgs/section10.png`} title={t('Merchandising, Activation and Event Management')} description={t('section10')} data={data10} /> </SwiperSlide>

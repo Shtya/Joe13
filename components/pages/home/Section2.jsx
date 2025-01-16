@@ -13,8 +13,9 @@ export default function Section2() {
     const t = useTranslations();
 
     const data = [
-        { name: t('Revenue'), value: 66, unit: 'M' },
-        { name: t('HR Outsourcing'), value: 10, unit: 'K' },
+
+        { name: t('cities'), value: 47},
+        { name: t('Successful Projects'), value: 180 },
         { name: t('Clients'), value: 100 },
         { name: t('Team Members'), value: 70 },
         { name: t('Growth'), value: 31, unit: '%' },

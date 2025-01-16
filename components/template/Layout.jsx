@@ -35,7 +35,7 @@ export default function Layout({ children }) {
     const [finish , setfinish ] = useState(false)
 
     return (
-        true ?
+        finish ?
         <main className='overflow-x-hidden'>
             <Navbar isclick={isclick} handleClick={handleClick} />
             <WhatsApp />

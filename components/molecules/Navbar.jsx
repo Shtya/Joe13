@@ -9,6 +9,18 @@ import SwitchLang from '../atoms/SwitchLang';
 export default function Navbar({ isclick, handleClick }) {
     const t = useTranslations('Navbar');
     const pathname = usePathname()
+    
+    const [addBg , setaddBg ] = useState(false)
+    useEffect(()=> {
+      if(pathname == "/" || pathname == "/about-us"){
+        setaddBg(true)
+      }
+      else setaddBg(false)
+      console.log(pathname)
+    } ,[pathname])
+
+
+    console.log(addBg)
 
     const links = [
         { value: '/?section=home', name: t('home') },
@@ -114,7 +126,7 @@ export default function Navbar({ isclick, handleClick }) {
 
     return (
         <nav className={` text-white z-[100000] relative `}>
-			<div  className={`${isFooterInView ? "bg-white" : "bg-black bg-opacity-30 "} ${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '}  py-[20px] fixed !duration-300 !transition-all w-full `} >
+			<div  className={`${addBg ? (isFooterInView ? "bg-white" : "bg-black bg-opacity-30 ") : null } ${isclick ? ' rtl:right-[251px] ltr:left-[251px] top-[0px]' : 'rtl:right-0 ltr:left-0 top-0 '}  py-[20px] fixed !duration-300 !transition-all w-full `} >
 				<div className={` ${isclick ? "": "container"}  flex items-center justify-between gap-[10px]`}>
                     <div className="flex items-center gap-[10px]  " >
                         <div onClick={handleClick} className={`   cursor-pointer hover:bg-primary !duration-300 !transition-all flex items-center justify-center text-white w-[40px] h-[40px] `}><MenuIcon className={isFooterInView ? "text-black" : "text-white"} />  </div>

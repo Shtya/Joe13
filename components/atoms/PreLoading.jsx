@@ -12,7 +12,7 @@ const PreLoading = ({finish , setfinish}) => {
     // GSAP animation to animate the loading bar from 0% to 100%
     gsap.to(loadingBarRef.current, {
       width: '100%', // Animate the width to 100%
-      duration: 2, // Duration of 4000ms (4 seconds)
+      duration: 1.5, // Duration of 4000ms (4 seconds)
       ease: 'power2.out', // Smooth easing
       onUpdate: () => {
         const progress = Math.round(gsap.getProperty(loadingBarRef.current, 'width') );

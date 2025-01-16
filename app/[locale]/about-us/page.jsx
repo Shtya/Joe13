@@ -56,7 +56,7 @@ export default function Page() {
         creativeEffect: {
             prev: {
                 shadow: true,
-                translate: [0, '-100%', -400],
+                translate: [0, '-100%', -100],
             },
             next: {
                 translate: [0, '100%', 0],

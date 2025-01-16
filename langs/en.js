@@ -8,6 +8,8 @@ export default {
     section1 : "360 solutions company with +11 years of experience in the market",
     section2 : "Our Success in Numbers, Driving Impact Across Industries",
     section4 : "Check out our Business Units and their services" ,
+    "cities" : "Cities",
+    "Successful Projects" : "Successful Projects",
     "Revenue" : "Revenue" ,
     "HR Outsourcing" : "HR Outsourcing" ,
     "Clients" : "Clients" ,
